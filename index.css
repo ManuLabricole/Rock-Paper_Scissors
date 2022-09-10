@@ -30,7 +30,32 @@
     align-items: center;
 
     border-radius: 50px;
-
     background: rgba(221, 159, 255, 0.116);
     backdrop-filter: blur(15px);
+}
+
+.player-avatar-selection {
+    height: 100%;
+    width: 30%;
+    border: solid 5px red;
+}
+
+.gameboy-area {
+    height: 50%;
+    width: 40%;
+    border: solid 5px red;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#gameBoy {
+    /* height: 100%; */
+    width: 110%;
+}
+.computer-avatar-selection {
+    height: 100%;
+    width: 30%;
+    border: solid 5px red;
 }
