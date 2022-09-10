@@ -11,18 +11,15 @@
 
 // Define all the possible choices of the game in an Array
 const availableChoices = ["ROCK", "PAPER", "SCISSORS"];
+// Initialization of score when first page loaded
 let score = [5, 5];
-// let userScore = 5;
-// let computerScore = 5;
-
-console.log("start");
 
 // Randomly choose between the possibilities inside the availableChoices Array
 function getComputerChoice() {
   return availableChoices[Math.floor(Math.random() * availableChoices.length)];
 }
 
-// Ask the player and validate as valid possibility
+// Ask the player choice and validate it as valid possibility (case sensitive, spelling...)
 function getPlayerChoice() {
   // Build an non sensitive case to prevent un validation because of it
   let playerChoice = prompt("Make your choice");
@@ -33,6 +30,8 @@ function getPlayerChoice() {
     alert("Please try again !");
     return "ERROR";
   }
+
+  // Expecting the input to come from the UI => New condition to set
 }
 
 function playRound(userChoice, computerChoice) {
@@ -55,28 +54,37 @@ function playRound(userChoice, computerChoice) {
 function updateScore(userScore, computerScore, winner) {
   switch (winner) {
     case "tie":
+      // Give back information to UI
       break;
     case "user":
       computerScore = computerScore - 1;
+      // Give back information to UI
       break;
     case "computer":
       userScore = userScore - 1;
+      // Give back information to UI
       break;
   }
   score = [userScore, computerScore];
+  // Give back information by updating lifeBar !!
   return score;
 }
 
 function game() {
   while (score[0] > 0 && score[1] > 0) {
-    let computerChoice = getComputerChoice();
     let userChoice = getPlayerChoice();
+    // Update the gameBoy div => updateGameBoyUser
+    let computerChoice = getComputerChoice();
+    // Update the gameBoy div => updateGameBoyComputer
     let winner = playRound(userChoice, computerChoice);
+    // Update the gameBoy div => updateGameBoy-Result
     updateScore(score[0], score[1], winner);
   }
 }
 
 game();
+
+// --------------------------------------------- SAND ---------------------------------------------
 
 const div = document.querySelector(".container");
 div.addEventListener("click", (e) => {
