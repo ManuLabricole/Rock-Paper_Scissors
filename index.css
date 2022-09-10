@@ -1,6 +1,12 @@
+@font-face {
+    font-family:"pixel_font";
+    src: url("./assets/font/pixel_font.TTF") format("truetype");
+  }
+
 *, *::before, *::after {
     margin: 0;padding: 0;
     box-sizing: border-box;
+    font-family: "pixel_font";
 }
 
 
@@ -10,6 +16,7 @@
 
 #bg_img {
     height: 100%;
+    width: 100%;
 }
 
 .container {
@@ -17,6 +24,7 @@
     top: 0;left: 0;
     height: 100vh;
     width: 100%;
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,20 +43,64 @@
 }
 
 .player-avatar-selection {
+    display: block;
     height: 100%;
     width: 30%;
-    border: solid 5px red;
+    /* border: solid 5px red; */
+}
+
+h1 {
+    font-size: 2em;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.avatar-container {
+    width: 100%;
+    margin-top: 150px;
+    margin-left: 20px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;  
+    gap: 1em;
+}
+
+.avatar-card {
+    margin: 5px;
+    height : 110px;
+    width: 110px;
+    padding: 5px;
+
+    display: flex;
+    justify-content: center;
+
+    border-radius: 10px;
+    background: rgba(37, 37, 37, 0.487);
+    box-shadow: inset 0px 0px 5px rgb(205, 98, 255);
+
+    transition: 0.1s ease-in-out;
+
+}
+
+.avatar-card > img {
+    height: 100%;
+}
+
+.avatar-card:hover {
+    transform: scale(1.1);
+    background: rgba(168, 167, 167, 0.487);
+    transition: 0.1s ease-in-out;
 }
 
 .gameboy-area {
     height: 50%;
-    width: 40%;
-    border: solid 5px red;
-
-
+    width: 30%;
+    /* border: solid 5px red; */
     display: flex;
     justify-content: center;
     align-items: center;
+    border: solid 2px green;
 }
 #gameBoy {
     /* height: 100%; */
