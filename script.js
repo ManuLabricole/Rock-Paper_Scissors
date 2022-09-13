@@ -11,6 +11,7 @@
 
 // Define all the possible choices of the game in an Array
 const availableChoices = ["ROCK", "PAPER", "SCISSORS"];
+const avatarData = ["avatar_1", "avatar_1", "avatar_1"];
 // Initialization of score when first page loaded
 let score = [5, 5];
 
@@ -82,7 +83,7 @@ function game() {
   }
 }
 
-game();
+// game();
 
 // --------------------------------------------- SAND ---------------------------------------------
 
