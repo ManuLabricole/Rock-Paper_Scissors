@@ -9,19 +9,27 @@ const avatarList = [
   "avatar_8",
 ];
 
-const avatarContainer = document.querySelector(".avatar-container");
+const avatarPlayerContainer = document.querySelector(".avatar-container");
+const avatarComputerContainer = document.querySelector(
+  ".computer-avatar-selection"
+);
 
 function getClickResult(e) {
   console.log(e.target.id);
 }
 
-avatarList.forEach((name) => {
-  let newDiv = document.createElement("div");
-  let img = document.createElement("img");
-  img.id = `${name}`;
-  img.src = "./assets/img/avatar/" + `${name}` + ".png";
-  newDiv.appendChild(img);
-  newDiv.classList.add("avatar-card");
-  newDiv.addEventListener("click", getClickResult);
-  avatarContainer.appendChild(newDiv);
-});
+function addAvatar(filledDiv) {
+  avatarList.forEach((name) => {
+    let newDiv = document.createElement("div");
+    let img = document.createElement("img");
+    img.id = `${name}`;
+    img.src = "./assets/img/avatar/" + `${name}` + ".png";
+    newDiv.appendChild(img);
+    newDiv.classList.add("avatar-card");
+    newDiv.addEventListener("click", getClickResult);
+    filledDiv.appendChild(newDiv);
+  });
+}
+
+addAvatar(avatarPlayerContainer);
+addAvatar(avatarComputerContainer);
