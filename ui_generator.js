@@ -10,7 +10,10 @@ const avatarList = [
 ];
 
 const avatarContainer = document.querySelector(".avatar-container");
-console.log(avatarContainer);
+
+function getClickResult(e) {
+  console.log(e.target.id);
+}
 
 avatarList.forEach((name) => {
   let newDiv = document.createElement("div");
@@ -19,6 +22,6 @@ avatarList.forEach((name) => {
   img.src = "./assets/img/avatar/" + `${name}` + ".png";
   newDiv.appendChild(img);
   newDiv.classList.add("avatar-card");
+  newDiv.addEventListener("click", getClickResult);
   avatarContainer.appendChild(newDiv);
-  console.log(newDiv);
 });
