@@ -95,6 +95,10 @@ h1 {
     transition: 0.1s ease-in-out;
 }
 
+.avatar-card.active {
+    background: rgba(168, 167, 167, 0.487);
+}
+
 .gameboy-area {
     /* height: 50%; */
     width: 50%;
