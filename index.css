@@ -182,8 +182,8 @@ h1 {
     cursor: pointer;
     position: absolute;
     top: 58.5%;left: 15%;
-    height: 4%;
-    width: 10%;
+    height: 4.2%;
+    width: 10.2%;
     border-radius: 15px;
     transform: rotate(17deg);
     background: rgba(218, 218, 232, 0.498);
@@ -212,8 +212,9 @@ h1 {
 .start-button.gameOff {
     position: absolute;
     animation: none;
-    height: 4.5%;
-    width: 10%;
+    top: 59%;left: 15%;
+    height: 4%;
+    width: 10.2%;
     border-radius: 10px;
 
     box-shadow: 
