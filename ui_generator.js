@@ -10,14 +10,35 @@ const avatarList = [
 ];
 
 // Select the two containers which will be filled with avatar div
-const avatarPlayerContainer = document.querySelector(".avatar-container");
+let avatarPlayerContainer = document.querySelector(".avatar-container");
 const avatarComputerContainer = document.querySelector(
   ".computer-avatar-selection"
 );
 
 function getClickResult(e) {
-  console.log(e.target.id);
+  avatarPlayerContainer = document.querySelector(".avatar-container");
+  let el = e.target;
+  let parentEl = el.parentElement;
+  let child = avatarComputerContainer.children;
+  child = Array.from(child);
+
+  //   child[3].classList.add("oui");
+
+  for (el in child) {
+    console.log(child[el]);
+    child[el].classList.remove("active");
+  }
+
+  //   child.forEach((el) => {
+  //     removeActiveClassAvatar(el);
+  //   });
+  parentEl.classList.add("active");
 }
+
+// function removeActiveClassAvatar(el) {
+//   console.log(el);
+//   el.classList.add("Baaaa");
+// }
 
 // Function that create DIV and img inside. Src of img is created calling avatarList
 function addAvatar(filledDiv) {
