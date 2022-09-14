@@ -42,6 +42,12 @@
     backdrop-filter: blur(15px);
 }
 
+.game-container.landingState {
+    display: flex;
+    justify-content: center;
+}
+
+
 .player-area {
     display: block;
     height: 100%;
@@ -49,9 +55,9 @@
     border: solid 1px red;
 }
 
-/* .player-area.gameOff {
+.player-area.landingState {
     display: none;
-} */
+}
 
 h1 {
     color: rgb(10,10,10);
@@ -106,7 +112,6 @@ h1 {
 .gameboy-area {
     /* height: 50%; */
     width: 30%;
-    /* border: solid 5px red; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -117,7 +122,7 @@ h1 {
     border: solid 2px green;
 }
 
-.gameboy-area.gameOff {
+.gameboy-area.landingState {
     width: 80%;
 }
 
@@ -128,9 +133,9 @@ h1 {
 
 }
 
-/* .computer-area.gameOff {
+.computer-area.landingState {
     display: none;
-} */
+}
 
 .computer-avatar-container {
     width: 100%;
@@ -142,3 +147,5 @@ h1 {
     justify-items: center;
     border: solid 2px green;
 }
+
+
