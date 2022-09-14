@@ -17,28 +17,15 @@ const avatarComputerContainer = document.querySelector(
 
 function getClickResult(e) {
   avatarPlayerContainer = document.querySelector(".avatar-container");
+  console.log(e.target);
+
   let el = e.target;
   let parentEl = el.parentElement;
   let child = avatarComputerContainer.children;
   child = Array.from(child);
 
-  //   child[3].classList.add("oui");
-
-  for (el in child) {
-    console.log(child[el]);
-    child[el].classList.remove("active");
-  }
-
-  //   child.forEach((el) => {
-  //     removeActiveClassAvatar(el);
-  //   });
   parentEl.classList.add("active");
 }
-
-// function removeActiveClassAvatar(el) {
-//   console.log(el);
-//   el.classList.add("Baaaa");
-// }
 
 // Function that create DIV and img inside. Src of img is created calling avatarList
 function addAvatar(filledDiv) {
