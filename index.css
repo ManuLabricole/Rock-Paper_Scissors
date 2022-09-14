@@ -42,12 +42,16 @@
     backdrop-filter: blur(15px);
 }
 
-.player-avatar-selection {
+.player-area {
     display: block;
     height: 100%;
-    width: 30%;
-    /* border: solid 5px red; */
+    width: 35%;
+    border: solid 1px red;
 }
+
+/* .player-area.gameOff {
+    display: none;
+} */
 
 h1 {
     color: rgb(10,10,10);
@@ -60,20 +64,11 @@ h1 {
 .avatar-container {
     width: 100%;
     margin-top: 150px;
-    margin-left: 20px;
 
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;  
     gap: 1em;
-}
-.computer-avatar-container {
-    width: 100%;
-    margin-top: 150px;
-    margin-left: 20px;
-
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;  
-    gap: 1em;
+    justify-items: center;
 }
 
 .avatar-card {
@@ -110,7 +105,7 @@ h1 {
 
 .gameboy-area {
     /* height: 50%; */
-    width: 50%;
+    width: 30%;
     /* border: solid 5px red; */
     display: flex;
     justify-content: center;
@@ -121,8 +116,29 @@ h1 {
     width: 100%;
     border: solid 2px green;
 }
-.computer-avatar-selection {
+
+.gameboy-area.gameOff {
+    width: 80%;
+}
+
+.computer-area {
     height: 100%;
-    width: 30%;
-    border: solid 5px red;
+    width: 35%;
+    border: solid 2px red;
+
+}
+
+/* .computer-area.gameOff {
+    display: none;
+} */
+
+.computer-avatar-container {
+    width: 100%;
+    margin-top: 150px; 
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;  
+    gap: 1em;
+    justify-items: center;
+    border: solid 2px green;
 }

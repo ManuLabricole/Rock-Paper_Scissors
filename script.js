@@ -90,5 +90,5 @@ function game() {
 const div = document.querySelector(".container");
 div.addEventListener("click", (e) => {
   score = [5, 5];
-  game();
+  // game();
 });
