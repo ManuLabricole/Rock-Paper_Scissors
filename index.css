@@ -1,0 +1,144 @@
+@font-face {
+    font-family:"pixel_font";
+    src: url("./assets/font/pixel_font.TTF") format("truetype");
+  }
+
+*, *::before, *::after {
+    margin: 0;padding: 0;
+    box-sizing: border-box;
+    font-family: "pixel_font";
+}
+
+
+.page-background {
+    height: 100vh;
+}
+
+#bg_img {
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    position: absolute;
+    top: 0;left: 0;
+    height: 100vh;
+    width: 100%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container {
+    height: 90%;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-radius: 50px;
+    background: rgba(221, 159, 255, 0.116);
+    backdrop-filter: blur(15px);
+}
+
+.player-area {
+    display: block;
+    height: 100%;
+    width: 35%;
+    border: solid 1px red;
+}
+
+/* .player-area.gameOff {
+    display: none;
+} */
+
+h1 {
+    color: rgb(10,10,10);
+    font-size: 2em;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.avatar-container {
+    width: 100%;
+    margin-top: 150px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;  
+    gap: 1em;
+    justify-items: center;
+}
+
+.avatar-card {
+    margin: 5px;
+    height : 110px;
+    width: 110px;
+    padding: 5px;
+
+    display: flex;
+    justify-content: center;
+
+    border-radius: 10px;
+    background: rgba(37, 37, 37, 0.702);
+    box-shadow: inset 0px 0px 5px rgb(205, 98, 255);
+
+    transition: 0.1s ease-in-out;
+
+}
+
+.avatar-card > img {
+    height: 100%;
+}
+
+.avatar-card.player:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    background: rgba(168, 167, 167, 0.487);
+    transition: 0.1s ease-in-out;
+}
+
+.avatar-card.active {
+    background: rgba(168, 167, 167, 0.487);
+}
+
+.gameboy-area {
+    /* height: 50%; */
+    width: 30%;
+    /* border: solid 5px red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 2px green;
+}
+#gameBoy {
+    width: 100%;
+    border: solid 2px green;
+}
+
+.gameboy-area.gameOff {
+    width: 80%;
+}
+
+.computer-area {
+    height: 100%;
+    width: 35%;
+    border: solid 2px red;
+
+}
+
+/* .computer-area.gameOff {
+    display: none;
+} */
+
+.computer-avatar-container {
+    width: 100%;
+    margin-top: 150px; 
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;  
+    gap: 1em;
+    justify-items: center;
+    border: solid 2px green;
+}
