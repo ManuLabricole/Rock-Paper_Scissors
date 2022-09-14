@@ -11,4 +11,27 @@ function loadAnimation() {
   console.log(gameboyArea);
 }
 
-setTimeout(loadAnimation, 1000);
+setTimeout(loadAnimation, 10);
+
+// ------------------------------------------------------------------------------------------
+// Test button interaction
+
+const startButton = document.getElementById("start-button");
+
+// function startHovered() {
+//   startButton.classList.add("detected");
+// }
+
+// startButton.addEventListener(onmouseover, (e) => {
+//   console.log(e);
+// });
+
+startButton.addEventListener("mouseenter", function (e) {
+  let startButtonClass = e.target.classList.value;
+  if (startButtonClass.includes("detected")) {
+    console.log("already hovered");
+    return;
+  } else {
+    startButton.classList.add("detected");
+  }
+});
