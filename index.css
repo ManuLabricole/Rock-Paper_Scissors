@@ -63,16 +63,14 @@
     backdrop-filter: blur(0px);
 }
 
-
-.player-area {
+.player-area.landingState {
+    display: none;
+}
+.player-area.gameOff {
     display: block;
     height: 100%;
     width: 35%;
     border: solid 1px red;
-}
-
-.player-area.landingState {
-    display: none;
 }
 
 h1 {
@@ -147,20 +145,31 @@ h1 {
     transition-delay: 0.5s;
 }
 
-.computer-area {
-    height: 100%;
-    width: 35%;
-    border: solid 2px red;
+.gameboy-area.gameOff {
+    position: relative;
+    min-width: 360px;
+    min-height: 233px;
+    max-width: 360px;
+    max-height: 233px;
+
+    border: solid 1px green;
+
+    transition: 0.2s;
 }
 
 .computer-area.landingState {
     display: none;
 }
+.computer-area.gameOff {
+    height: 100%;
+    width: 35%;
+    border: solid 2px red;
+}
+
 
 .computer-avatar-container {
     width: 100%;
     margin-top: 150px; 
-
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;  
     gap: 1em;
@@ -172,12 +181,77 @@ h1 {
     all: unset;
     cursor: pointer;
     position: absolute;
-    top: 410px;left: 160px;
-    height: 30px;
-    width: 113px;
+    top: 58.5%;left: 15%;
+    height: 4%;
+    width: 10%;
     border-radius: 15px;
     transform: rotate(17deg);
     background: rgba(218, 218, 232, 0.498);
+    box-shadow: 
+    2px 2px 2px white,
+    -2px -2px 2px white,
+    -2px 2px 2px white,
+    2px -2px 2px white;
+
+    animation: lightening 1s linear infinite;
+}
+
+.start-button:active {
+    box-shadow: 
+    inset 2px 2px 2px white,
+    inset -2px -2px 2px white,
+    inset -2px 2px 2px white,
+    inset 2px -2px 2px white;
+}
+
+
+.start-button.detected {
+    animation: none;
+}
+
+.start-button.gameOff {
+    position: absolute;
+    animation: none;
+    height: 4.5%;
+    width: 10%;
+    border-radius: 10px;
+
+    box-shadow: 
+    1px 1px 1px white,
+    -1px -1px 1px white,
+    -1px 1px 1px white,
+    1px -1px 1px white;
+}
+.start-button.gameOff:active {
+    box-shadow: 
+    inset 2px 2px 2px white,
+    inset -2px -2px 2px white,
+    inset -2px 2px 2px white,
+    inset 2px -2px 2px white;
+}
+
+
+
+/* ----------------------------------------------------------------------------------- */
+/* ------------------------------------ animation ------------------------------------ */
+/* ----------------------------------------------------------------------------------- */
+
+
+@keyframes lightening {
+    0% {
+        box-shadow: 
+        2px 2px 2px white,
+        -2px -2px 2px white,
+        -2px 2px 2px white,
+        2px -2px 2px white;
+    }
+    50% {
+        box-shadow: 
+        2px 2px 10px white,
+        -2px -2px 10px white,
+        -2px 2px 10px white,
+        2px -2px 10px white;
+    }
 }
 
 
