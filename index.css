@@ -50,7 +50,7 @@
 }
 
 h1 {
-    color: red;
+    color: rgb(10,10,10);
     font-size: 2em;
     text-align: center;
     margin-top: 20px;
@@ -58,6 +58,15 @@ h1 {
 }
 
 .avatar-container {
+    width: 100%;
+    margin-top: 150px;
+    margin-left: 20px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;  
+    gap: 1em;
+}
+.computer-avatar-container {
     width: 100%;
     margin-top: 150px;
     margin-left: 20px;
@@ -88,7 +97,7 @@ h1 {
     height: 100%;
 }
 
-.avatar-card:hover {
+.avatar-card.player:hover {
     cursor: pointer;
     transform: scale(1.1);
     background: rgba(168, 167, 167, 0.487);

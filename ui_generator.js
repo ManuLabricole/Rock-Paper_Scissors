@@ -10,20 +10,19 @@ const avatarList = [
 ];
 
 // Select the two containers which will be filled with avatar div
-let avatarPlayerContainer = document.querySelector(".avatar-container");
+const avatarPlayerContainer = document.querySelector(".avatar-container");
 const avatarComputerContainer = document.querySelector(
-  ".computer-avatar-selection"
+  ".computer-avatar-container"
 );
 
 function getClickResult(e) {
   //   aim is to target the previous active avatar and remove the active class
-  let avatarPlayerContainer = document.querySelector(".avatar-container");
   let avatarPlayerContainerChild = Array.from(avatarPlayerContainer.children);
   avatarPlayerContainerChild.forEach((child) => {
     if (child.classList.value.includes("active")) {
       child.classList.remove("active");
     } else {
-      return false;
+      return;
     }
   });
 
@@ -50,9 +49,13 @@ function addAvatar(filledDiv) {
     img.src = "./assets/img/avatar/" + `${name}` + ".png";
     newDiv.appendChild(img);
 
+    // Add the functions to each DIV per avatar IF in player selection
+    if (filledDiv === avatarPlayerContainer) {
+      newDiv.classList.add("avatar-card");
+      newDiv.classList.add("player");
+      newDiv.addEventListener("click", getClickResult);
+    }
     newDiv.classList.add("avatar-card");
-    // Add the functions to each DIV per avatar
-    newDiv.addEventListener("click", getClickResult);
     filledDiv.appendChild(newDiv);
   });
 }
