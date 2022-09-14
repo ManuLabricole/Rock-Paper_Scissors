@@ -16,15 +16,19 @@ const avatarComputerContainer = document.querySelector(
 );
 
 function getClickResult(e) {
-  avatarPlayerContainer = document.querySelector(".avatar-container");
-  console.log(e.target);
+  let avatarPlayerContainer = document.querySelector(".avatar-container");
+  console.log(avatarPlayerContainer.children);
+  let avatarPlayerContainerChild = Array.from(avatarPlayerContainer.children);
 
-  let el = e.target;
-  let parentEl = el.parentElement;
-  let child = avatarComputerContainer.children;
-  child = Array.from(child);
-
-  parentEl.classList.add("active");
+  let targetClass = e.target.classList.value;
+  //   If the click is on the DIV element add the class to the target
+  if (targetClass.includes("avatar-card")) {
+    console.log(true);
+    e.target.classList.add("active");
+    // If the click is on the img child of DIV - get the parent and add the class
+  } else {
+    e.target.parentElement.classList.add("active");
+  }
 }
 
 // Function that create DIV and img inside. Src of img is created calling avatarList
