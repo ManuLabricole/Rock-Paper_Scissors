@@ -16,10 +16,18 @@ const avatarComputerContainer = document.querySelector(
 );
 
 function getClickResult(e) {
+  //   aim is to target the previous active avatar and remove the active class
   let avatarPlayerContainer = document.querySelector(".avatar-container");
-  console.log(avatarPlayerContainer.children);
   let avatarPlayerContainerChild = Array.from(avatarPlayerContainer.children);
+  avatarPlayerContainerChild.forEach((child) => {
+    if (child.classList.value.includes("active")) {
+      child.classList.remove("active");
+    } else {
+      return false;
+    }
+  });
 
+  //   Then add the class to the target click div with child click handling
   let targetClass = e.target.classList.value;
   //   If the click is on the DIV element add the class to the target
   if (targetClass.includes("avatar-card")) {
