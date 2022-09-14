@@ -14,20 +14,30 @@
     height: 100vh;
 }
 
-#bg_img {
+#bg_img.loadState {
     height: 100%;
-    width: 100%;
+    width: 130%;
+
+    transform: translateX(-500px);
+}
+#bg_img.landingState {
+    height: 100%;
+    width: 130%;
+
+    transform: translateX(0px);
+    transition: 1s;
 }
 
-.container {
+.container{
     position: absolute;
-    top: 0;left: 0;
+    top: 0;left: 0px;
     height: 100vh;
     width: 100%;
     
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .game-container {
@@ -45,6 +55,10 @@
 .game-container.landingState {
     display: flex;
     justify-content: center;
+
+    border-radius: 50px;
+    background: transparent;
+    backdrop-filter: blur(0px);
 }
 
 
@@ -122,8 +136,14 @@ h1 {
     border: solid 2px green;
 }
 
+.gameboy-area.loadState {
+    width: 80%;
+    opacity: 0;
+}
 .gameboy-area.landingState {
     width: 80%;
+    opacity: 1;
+    transition: 1s ease-in;
 }
 
 .computer-area {

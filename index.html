@@ -9,16 +9,21 @@
   </head>
   <body>
     <div class="page-background">
-      <img id="bg_img" src="./assets/img/bg.jpg" alt="livingRoom" />
+      <img
+        id="bg_img"
+        src="./assets/img/bg.jpg"
+        alt="livingRoom"
+        class="loadState"
+      />
     </div>
-    <div class="container">
+    <div id="main-container" class="container">
       <div class="game-container landingState">
         <div id="player-area" class="player-area landingState">
           <h1 id="selectPlayer">SELECT PLAYER</h1>
 
           <div class="avatar-container"></div>
         </div>
-        <div id="gameboy-area" class="gameboy-area landingState">
+        <div id="gameboy-area" class="gameboy-area loadState">
           <img id="gameBoy" src="./assets/img/gameboy.png" alt="" />
           <div class="screen-game-boy">
             <button id="start-button" class="start-button"></button>
@@ -33,4 +38,5 @@
   </body>
   <!-- <script src="script.js" defer></script> -->
   <script src="ui_generator.js"></script>
+  <script src="startAnimation.js"></script>
 </html>
