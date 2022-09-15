@@ -3,9 +3,9 @@ const avatarComputerContainer = document.querySelector(
   ".computer-avatar-container"
 );
 
-setTimeout(loadAnimation, 10);
+setTimeout(loadAnimation, 10); // --> ui-layout.js
 
-addAvatar(avatarPlayerContainer);
-addAvatar(avatarComputerContainer);
+addAvatar(avatarPlayerContainer); // -->ui-layout.js
+addAvatar(avatarComputerContainer); // -->ui-layout.js
 
-startbtn();
+startbtn(); // // -->ui-gameplay.js
