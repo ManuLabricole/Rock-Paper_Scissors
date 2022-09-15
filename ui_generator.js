@@ -9,13 +9,13 @@ const avatarList = [
   "avatar_8",
 ];
 
-// Select the two containers which will be filled with avatar div
-const avatarPlayerContainer = document.querySelector(".avatar-container");
-const avatarComputerContainer = document.querySelector(
-  ".computer-avatar-container"
-);
+function getPlayerAvatarChoice(e) {
+  //   // Select the two containers which will be filled with avatar div
+  //   const avatarPlayerContainer = document.querySelector(".avatar-container");
+  //   //   const avatarComputerContainer = document.querySelector(
+  //   //     ".computer-avatar-container"
+  //   //   );
 
-function getPlayerChoice(e) {
   //   aim is to target the previous active avatar and remove the active class
   let avatarPlayerContainerChild = Array.from(avatarPlayerContainer.children);
 
@@ -55,7 +55,7 @@ function addAvatar(filledDiv) {
     if (filledDiv === avatarPlayerContainer) {
       newDiv.classList.add("avatar-card");
       newDiv.classList.add("player");
-      newDiv.addEventListener("click", getPlayerChoice);
+      newDiv.addEventListener("click", getPlayerAvatarChoice);
     }
     newDiv.classList.add("avatar-card");
     filledDiv.appendChild(newDiv);
