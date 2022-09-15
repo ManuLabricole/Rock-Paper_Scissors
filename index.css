@@ -157,6 +157,38 @@ h1 {
     transition: 0.2s;
 }
 
+.start-button.detected {
+    animation: none;
+}
+
+.start-button.gameOff {
+    position: absolute;
+    animation: none;
+    top: 59%;left: 15%;
+    height: 4.2%;
+    width: 10%;
+    border-radius: 10px;
+
+    box-shadow: 
+    1px 1px 1px white,
+    -1px -1px 1px white,
+    -1px 1px 1px white,
+    1px -1px 1px white;
+}
+.start-button.gameOff:active {
+    box-shadow: 
+    inset 2px 2px 2px white,
+    inset -2px -2px 2px white,
+    inset -2px 2px 2px white,
+    inset 2px -2px 2px white;
+}
+
+
+
+
+
+
+
 .computer-area.landingState {
     display: none;
 }
@@ -197,33 +229,6 @@ h1 {
 }
 
 .start-button:active {
-    box-shadow: 
-    inset 2px 2px 2px white,
-    inset -2px -2px 2px white,
-    inset -2px 2px 2px white,
-    inset 2px -2px 2px white;
-}
-
-
-.start-button.detected {
-    animation: none;
-}
-
-.start-button.gameOff {
-    position: absolute;
-    animation: none;
-    top: 59%;left: 15%;
-    height: 4.2%;
-    width: 10%;
-    border-radius: 10px;
-
-    box-shadow: 
-    1px 1px 1px white,
-    -1px -1px 1px white,
-    -1px 1px 1px white,
-    1px -1px 1px white;
-}
-.start-button.gameOff:active {
     box-shadow: 
     inset 2px 2px 2px white,
     inset -2px -2px 2px white,
