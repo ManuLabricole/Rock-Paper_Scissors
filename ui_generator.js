@@ -15,9 +15,11 @@ const avatarComputerContainer = document.querySelector(
   ".computer-avatar-container"
 );
 
-function getClickResult(e) {
+function getPlayerChoice(e) {
   //   aim is to target the previous active avatar and remove the active class
   let avatarPlayerContainerChild = Array.from(avatarPlayerContainer.children);
+
+  //   Remove the previous avatar selected
   avatarPlayerContainerChild.forEach((child) => {
     if (child.classList.value.includes("active")) {
       child.classList.remove("active");
@@ -49,16 +51,13 @@ function addAvatar(filledDiv) {
     img.src = "./assets/img/avatar/" + `${name}` + ".png";
     newDiv.appendChild(img);
 
-    // Add the functions to each DIV per avatar IF in player selection
+    // Add the functions to each DIV per avatar IF in player selection. Computer Avatar have no interaction
     if (filledDiv === avatarPlayerContainer) {
       newDiv.classList.add("avatar-card");
       newDiv.classList.add("player");
-      newDiv.addEventListener("click", getClickResult);
+      newDiv.addEventListener("click", getPlayerChoice);
     }
     newDiv.classList.add("avatar-card");
     filledDiv.appendChild(newDiv);
   });
 }
-
-addAvatar(avatarPlayerContainer);
-addAvatar(avatarComputerContainer);

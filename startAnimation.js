@@ -11,12 +11,11 @@ function loadAnimation() {
   console.log(gameboyArea);
 }
 
-setTimeout(loadAnimation, 10);
-
 // ------------------------------------------------------------------------------------------
 // Test button interaction
 
 const startButton = document.getElementById("start-button");
+
 startButton.addEventListener("mouseenter", function (e) {
   let startButtonClass = e.target.classList.value;
   if (startButtonClass.includes("detected")) {
