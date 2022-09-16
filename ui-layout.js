@@ -74,7 +74,7 @@ function getPlayerAvatarChoice(e) {
 
   computerChoiceAnimation();
 
-  return e.target.id;
+  //   return e.target.id;
 }
 
 // -----> Function n°4 => Update from Load to land State layout
@@ -91,14 +91,15 @@ function updateLayoutOnStart() {
 }
 
 // -----> Function n°5 => Animation for computer random avatar Choice
-function avatarBlinkloop(i, avatarTriggerNum) {
+
+function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
+  // get an array with all the div containing avatar previously created
   let avatarComputerContainerChild = Array.from(
     avatarComputerContainer.children
   );
 
   let counter = i;
 
-  console.log(avatarTriggerNum);
   setTimeout(function () {
     if (counter === 0) {
       avatarComputerContainerChild[counter].classList.add("active");
@@ -110,13 +111,20 @@ function avatarBlinkloop(i, avatarTriggerNum) {
       ) {
         avatarComputerContainerChild[counter - 1].classList.remove("active");
       }
-    } else if (counter > 0 && counter <= avatarTriggerNum) {
+      counter++;
+      console.log(counter);
+      avatarBlinkloop(counter, avatarTriggerNum);
+    } else if (counter > 0 && counter < avatarTriggerNum) {
       avatarComputerContainerChild[counter - 1].classList.remove("active");
       avatarComputerContainerChild[counter].classList.add("active");
-    }
-    counter++;
-    if (counter < avatarTriggerNum) {
+      counter++;
+      console.log(counter);
       avatarBlinkloop(counter, avatarTriggerNum);
+      //   End of loop ==> Update loop counter before calling again
+    } else if (counter == avatarTriggerNum && numLoop < 3) {
+      numLoop++;
+      avatarComputerContainerChild[counter - 1].classList.remove("active");
+    } else if (counter == avatarTriggerNum && numLoop === 3) {
     }
   }, 100);
 }
