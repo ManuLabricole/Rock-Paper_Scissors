@@ -4,6 +4,8 @@ const playerArea = document.getElementById("player-area");
 const gameboyArea = document.getElementById("gameboy-area");
 const computerArea = document.getElementById("computer-area");
 
+let isBlinkRunning = false;
+
 function loadAnimation() {
   bgImg.classList.remove("loadState");
   bgImg.classList.add("landingState");
@@ -65,7 +67,6 @@ function getPlayerAvatarChoice(e) {
   //   Then add the class to the target click div with child click handling
   //   If the click is on the DIV element add the class to the target
   if (targetClass.includes("avatar-card")) {
-    console.log(true);
     e.target.classList.add("active");
     // If the click is on the img child of DIV - get the parent and add the class
   } else {
@@ -93,26 +94,25 @@ function updateLayoutOnStart() {
 // -----> Function n°5 => Animation for computer random avatar Choice
 
 function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
-  // get an array with all the div containing avatar previously created
-  let avatarComputerContainerChild = Array.from(
+  const avatarComputerContainerChild = Array.from(
     avatarComputerContainer.children
   );
+  // get an array with all the div containing avatar previously created
 
   let loopCount = recallLoopCounter;
   let counter = loopCounter;
 
-  console.log(loopCount);
   setTimeout(function () {
+    // Initilization
     if (counter === 0) {
-      avatarComputerContainerChild[counter].classList.add("active");
-      // Check if class of last avatar has already been active
-      if (
-        avatarComputerContainerChild[
-          avatarTriggerNum - 1
-        ].classList.value.includes("active")
-      ) {
-        avatarComputerContainerChild[counter - 1].classList.remove("active");
+      if (avatarTriggerNum === 0) {
+        // to prevent classList error removing if random select (avatarTriggerNum) is 0
+        avatarComputerContainerChild[counter].classList.add("active");
+        return; // Return to prevent error finishing case
       }
+      avatarComputerContainerChild[counter].classList.add("active");
+
+      //   if (avatarTriggerNum)
       counter++;
     } else if (counter > 0 && counter < avatarTriggerNum) {
       avatarComputerContainerChild[counter - 1].classList.remove("active");
@@ -128,7 +128,8 @@ function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
 
       loopCount = -1;
       counter = 0;
-      avatarTriggerNum = 4; // random computer selection
+      avatarTriggerNum = Math.floor(Math.random() * (avatarList.length - 1)); // random computer selection
+      console.log(avatarTriggerNum);
     } else if (loopCount === -1) {
       return "run";
     }
@@ -143,6 +144,9 @@ function computerChoiceAnimation() {
   //   This loop aim to create dealy between change class of avatar. Otherwise the blink in the same time
   //   Main animation -> take number of loop, inside loop counter and treshold to end the loop
   avatarBlinkloop(2, 0, avatarTreshold);
+  isBlinkRunning = true;
+
+  return isBlinkRunning;
 
   //   avatarBlinkloop(i, avatarTreshold);
 
