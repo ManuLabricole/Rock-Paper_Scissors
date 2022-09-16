@@ -103,34 +103,28 @@ function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
   let counter = loopCounter;
 
   setTimeout(function () {
-    // Initilization
     if (counter === 0) {
-      if (avatarTriggerNum === 0) {
-        // to prevent classList error removing if random select (avatarTriggerNum) is 0
-        avatarComputerContainerChild[counter].classList.add("active");
-        return; // Return to prevent error finishing case
-      }
+      // Initilization
       avatarComputerContainerChild[counter].classList.add("active");
-
-      //   if (avatarTriggerNum)
       counter++;
     } else if (counter > 0 && counter < avatarTriggerNum) {
+      // In between
       avatarComputerContainerChild[counter - 1].classList.remove("active");
       avatarComputerContainerChild[counter].classList.add("active");
       counter++;
-      //   End of loop ==> Update loop counter before calling again
     } else if (counter === avatarTriggerNum && loopCount > 0) {
+      // Case Last avatar Div active AND Still loop animation to do
       avatarComputerContainerChild[counter - 1].classList.remove("active");
       loopCount--;
       counter = 0;
     } else if (counter === avatarTriggerNum && loopCount === 0) {
+      // Case Last avatar Div active last loop until random choice
       avatarComputerContainerChild[counter - 1].classList.remove("active");
-
       loopCount = -1;
       counter = 0;
       avatarTriggerNum = Math.floor(Math.random() * (avatarList.length - 1)); // random computer selection
-      console.log(avatarTriggerNum);
     } else if (loopCount === -1) {
+      // Exit the loop
       return "run";
     }
     avatarBlinkloop(loopCount, counter, avatarTriggerNum);
