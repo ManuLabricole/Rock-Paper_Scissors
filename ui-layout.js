@@ -98,8 +98,10 @@ function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
     avatarComputerContainer.children
   );
 
-  let counter = i;
+  let loopCount = recallLoopCounter;
+  let counter = loopCounter;
 
+  console.log(loopCount);
   setTimeout(function () {
     if (counter === 0) {
       avatarComputerContainerChild[counter].classList.add("active");
@@ -112,21 +114,29 @@ function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
         avatarComputerContainerChild[counter - 1].classList.remove("active");
       }
       counter++;
-      console.log(counter);
-      avatarBlinkloop(counter, avatarTriggerNum);
+      avatarBlinkloop(loopCount, counter, avatarTriggerNum);
     } else if (counter > 0 && counter < avatarTriggerNum) {
       avatarComputerContainerChild[counter - 1].classList.remove("active");
       avatarComputerContainerChild[counter].classList.add("active");
       counter++;
-      console.log(counter);
-      avatarBlinkloop(counter, avatarTriggerNum);
+      avatarBlinkloop(loopCount, counter, avatarTriggerNum);
       //   End of loop ==> Update loop counter before calling again
-    } else if (counter == avatarTriggerNum && numLoop < 3) {
-      numLoop++;
+    } else if (counter === avatarTriggerNum && loopCount > 0) {
       avatarComputerContainerChild[counter - 1].classList.remove("active");
-    } else if (counter == avatarTriggerNum && numLoop === 3) {
+      loopCount--;
+      counter = 0;
+      avatarBlinkloop(loopCount, counter, avatarTriggerNum);
+    } else if (counter === avatarTriggerNum && loopCount === 0) {
+      avatarComputerContainerChild[counter - 1].classList.remove("active");
+
+      loopCount = -1;
+      counter = 0;
+      avatarTriggerNum = 4; // random computer selection
+      avatarBlinkloop(loopCount, counter, avatarTriggerNum);
+    } else if (loopCount === -1) {
+      return "run";
     }
-  }, 100);
+  }, 50);
 }
 
 function computerChoiceAnimation() {
@@ -134,8 +144,8 @@ function computerChoiceAnimation() {
 
   let avatarTreshold = avatarList.length;
   //   This loop aim to create dealy between change class of avatar. Otherwise the blink in the same time
-
-  avatarBlinkloop(0, avatarTreshold);
+  //   Main animation -> take number of loop, inside loop counter and treshold to end the loop
+  avatarBlinkloop(2, 0, avatarTreshold);
 
   //   avatarBlinkloop(i, avatarTreshold);
 
