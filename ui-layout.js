@@ -114,28 +114,25 @@ function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
         avatarComputerContainerChild[counter - 1].classList.remove("active");
       }
       counter++;
-      avatarBlinkloop(loopCount, counter, avatarTriggerNum);
     } else if (counter > 0 && counter < avatarTriggerNum) {
       avatarComputerContainerChild[counter - 1].classList.remove("active");
       avatarComputerContainerChild[counter].classList.add("active");
       counter++;
-      avatarBlinkloop(loopCount, counter, avatarTriggerNum);
       //   End of loop ==> Update loop counter before calling again
     } else if (counter === avatarTriggerNum && loopCount > 0) {
       avatarComputerContainerChild[counter - 1].classList.remove("active");
       loopCount--;
       counter = 0;
-      avatarBlinkloop(loopCount, counter, avatarTriggerNum);
     } else if (counter === avatarTriggerNum && loopCount === 0) {
       avatarComputerContainerChild[counter - 1].classList.remove("active");
 
       loopCount = -1;
       counter = 0;
       avatarTriggerNum = 4; // random computer selection
-      avatarBlinkloop(loopCount, counter, avatarTriggerNum);
     } else if (loopCount === -1) {
       return "run";
     }
+    avatarBlinkloop(loopCount, counter, avatarTriggerNum);
   }, 50);
 }
 
