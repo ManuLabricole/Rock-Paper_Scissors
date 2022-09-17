@@ -3,19 +3,6 @@ const bgImg = document.getElementById("bg_img");
 const playerArea = document.getElementById("player-area");
 const gameboyArea = document.getElementById("gameboy-area");
 const computerArea = document.getElementById("computer-area");
-
-let isBlinkRunning = false;
-
-function loadAnimation() {
-  bgImg.classList.remove("loadState");
-  bgImg.classList.add("landingState");
-  gameboyArea.classList.remove("loadState");
-  gameboyArea.classList.add("landingState");
-  console.log(gameboyArea);
-}
-
-// -----> Function n°2 => add Avatar with interaction
-
 const avatarList = [
   "avatar_1",
   "avatar_2",
@@ -26,6 +13,22 @@ const avatarList = [
   "avatar_7",
   "avatar_8",
 ];
+const avatarTreshold = avatarList.length;
+
+// State constant to handle prevent handling and co
+let isBlinkRunning = false;
+
+// -----> Function n°1 => Pass layout style from Load --> Land
+
+// First by Timeout function first called in app.js
+function loadAnimation() {
+  bgImg.classList.remove("loadState");
+  bgImg.classList.add("landingState");
+  gameboyArea.classList.remove("loadState");
+  gameboyArea.classList.add("landingState");
+}
+
+// -----> Function n°2 => add Avatar with interaction
 
 function addAvatar(filledDiv) {
   avatarList.forEach((name) => {
@@ -52,11 +55,14 @@ function addAvatar(filledDiv) {
 
 function getPlayerAvatarChoice(e) {
   // html collection to Array to use forEach() method
-  let avatarPlayerContainerChild = Array.from(avatarPlayerContainer.children);
+  //   let avatarPlayerContainerChild = Array.from(avatarPlayerContainer.children);
+  avatarPlayerContainerChild = Array.from(avatarPlayerContainer.children);
   let targetClass = e.target.classList.value;
 
-  //   Remove the previous avatar selected
+  //   Detect and store the click by the user to lock double click while BlinkingRunning
+  isBlinkRunning = true;
   avatarPlayerContainerChild.forEach((child) => {
+    //   Remove the previous avatar selected
     if (child.classList.value.includes("active")) {
       child.classList.remove("active");
     } else {
@@ -73,9 +79,25 @@ function getPlayerAvatarChoice(e) {
     e.target.parentElement.classList.add("active");
   }
 
+  setAvatarClickEvent(isBlinkRunning);
   computerChoiceAnimation();
 
-  //   return e.target.id;
+  //   return avatarPlayerContainerChild;
+}
+
+// ----> Function 3.2 => Update event Listener availabilities depending on computerChoice State
+function setAvatarClickEvent(isBlinkingRunning) {
+  if (isBlinkingRunning === true) {
+    avatarPlayerContainerChild.forEach((avatarDiv) => {
+      avatarDiv.removeEventListener("click", getPlayerAvatarChoice);
+      avatarDiv.style.cursor = "none";
+    });
+  } else if (isBlinkingRunning === false) {
+    avatarPlayerContainerChild.forEach((avatarDiv) => {
+      avatarDiv.addEventListener("click", getPlayerAvatarChoice);
+      avatarDiv.style.cursor = "pointer";
+    });
+  }
 }
 
 // -----> Function n°4 => Update from Load to land State layout
@@ -97,6 +119,8 @@ function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
   const avatarComputerContainerChild = Array.from(
     avatarComputerContainer.children
   );
+  isBlinkRunning = true;
+
   // get an array with all the div containing avatar previously created
 
   let loopCount = recallLoopCounter;
@@ -124,25 +148,18 @@ function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
       counter = 0;
       avatarTriggerNum = Math.floor(Math.random() * (avatarList.length - 1)); // random computer selection
     } else if (loopCount === -1) {
-      // Exit the loop
+      isBlinkRunning = false;
+      setAvatarClickEvent(isBlinkRunning);
       return "run";
     }
     avatarBlinkloop(loopCount, counter, avatarTriggerNum);
-  }, 50);
+  }, 40);
 }
 
-function computerChoiceAnimation() {
-  // Animation on every avatars
+// Function triggered when avatar is selected by User, then trigger the computer choice & Animation
 
-  let avatarTreshold = avatarList.length;
+function computerChoiceAnimation() {
   //   This loop aim to create dealy between change class of avatar. Otherwise the blink in the same time
   //   Main animation -> take number of loop, inside loop counter and treshold to end the loop
   avatarBlinkloop(2, 0, avatarTreshold);
-  isBlinkRunning = true;
-
-  return isBlinkRunning;
-
-  //   avatarBlinkloop(i, avatarTreshold);
-
-  // Animation from avatar-1 --> Avatar selected
 }
