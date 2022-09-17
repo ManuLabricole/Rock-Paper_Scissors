@@ -155,7 +155,7 @@ function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
     } else if (loopCount === -1) {
       isBlinkRunning = false;
       setAvatarClickEvent(isBlinkRunning);
-      displayVersusDiv(playerAvatar);
+      displayVersusDiv(playerAvatar, avatarTriggerNum);
       return "run";
     }
     avatarBlinkloop(loopCount, counter, avatarTriggerNum);
@@ -175,11 +175,24 @@ function computerChoiceAnimation() {
 // Create a div with Avatar chosen : "Player VS Computer" display
 // Finally will add a START button to laumnch the game
 
-function displayVersusDiv(X) {
+function displayVersusDiv(playerId, computerId) {
   setTimeout(() => {
     pageState = "gameOff";
     let versusDiv = document.createElement("div");
+    let newPlayerAvatarDiv = document.createElement("div");
+    let imgPlayer = document.createElement("img");
+    let newComputerAvatarDiv = document.createElement("div");
+    let imgComputer = document.createElement("img");
+
     versusDiv.classList.add("versusArea");
+
+    // Add img with corresponding avatarList[X] avatar inside div
+
+    imgPlayer.id = playerId;
+    imgPlayer.src = "./assets/img/avatar/" + playerId + ".png";
+    newPlayerAvatarDiv.appendChild(imgPlayer);
+    newPlayerAvatarDiv.classList.add("avatar-card");
+    versusDiv.appendChild(newPlayerAvatarDiv);
     body.appendChild(versusDiv);
-  }, 1500);
+  }, 1200);
 }
