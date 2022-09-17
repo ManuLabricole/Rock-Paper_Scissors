@@ -44,37 +44,44 @@
 .game-container {
     height: 90%;
     width: 95%;
+
     display: flex;
-    justify-content: space-between;
     align-items: center;
-
-    border-radius: 50px;
-    background: rgba(221, 159, 255, 0.116);
-    backdrop-filter: blur(15px);
-}
-
-.game-container.landingState {
-    display: flex;
     justify-content: center;
     overflow: auto;
 
     border-radius: 50px;
-    background: transparent;
-    backdrop-filter: blur(0px);
+    background-color: transparent;
+}
+
+.game-container.gameOff {
+    background-color: rgba(143, 19, 210, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-transition: 
+    backdrop-filter 0.5s ease-in,
+    background-color 0.5s ease-in;
+
 }
 
 .player-area.landingState {
-    display: none;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
 }
 .player-area.gameOff {
     display: block;
     height: 100%;
     width: 35%;
-    border: solid 1px red;
+    visibility: visible;
+    opacity: 1;
+    -webkit-transition: 
+    visibility 0.5s ease-in,
+    opacity 0.5s ease-in;
+    /* border: solid 1px red; */
 }
 
 h1 {
-    color: rgb(10,10,10);
+    color:rgb(154,154,154);
     font-size: 2em;
     text-align: center;
     margin-top: 20px;
@@ -152,7 +159,7 @@ h1 {
     max-width: 360px;
     max-height: 233px;
 
-    border: solid 1px green;
+    /* border: solid 1px green; */
 
     transition: 0.2s;
 }
@@ -183,19 +190,20 @@ h1 {
     inset 2px -2px 2px white;
 }
 
-
-
-
-
-
-
 .computer-area.landingState {
-    display: none;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
 }
 .computer-area.gameOff {
     height: 100%;
     width: 35%;
-    border: solid 2px red;
+    visibility: visible;
+    opacity: 1;
+    -webkit-transition: 
+    visibility 0.5s ease-in,
+    opacity 0.5s ease-in;
+    /* border: solid 2px red; */
 }
 
 
@@ -206,7 +214,6 @@ h1 {
     grid-template-columns: 1fr 1fr 1fr;  
     gap: 1em;
     justify-items: center;
-    border: solid 2px rgb(128, 55, 0);
 }
 
 .start-button {
