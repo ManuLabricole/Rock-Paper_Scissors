@@ -82,7 +82,7 @@ function getPlayerAvatarChoice(e) {
 
   setAvatarClickEvent(isBlinkRunning);
   computerChoiceAnimation();
-
+  console.log("test");
   //   return avatarPlayerContainerChild;
 }
 
