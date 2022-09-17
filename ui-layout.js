@@ -155,7 +155,7 @@ function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
     } else if (loopCount === -1) {
       isBlinkRunning = false;
       setAvatarClickEvent(isBlinkRunning);
-      triggerGameON(playerAvatar);
+      displayVersusDiv(playerAvatar);
       return "run";
     }
     avatarBlinkloop(loopCount, counter, avatarTriggerNum);
@@ -175,9 +175,11 @@ function computerChoiceAnimation() {
 // Create a div with Avatar chosen : "Player VS Computer" display
 // Finally will add a START button to laumnch the game
 
-function triggerGameON(X) {
+function displayVersusDiv(X) {
   setTimeout(() => {
     pageState = "gameOff";
-    console.log(X);
+    let versusDiv = document.createElement("div");
+    versusDiv.classList.add("versusArea");
+    body.appendChild(versusDiv);
   }, 1500);
 }
