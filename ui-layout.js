@@ -3,6 +3,7 @@ const bgImg = document.getElementById("bg_img");
 const playerArea = document.getElementById("player-area");
 const gameboyArea = document.getElementById("gameboy-area");
 const computerArea = document.getElementById("computer-area");
+const gameContainerArea = document.getElementById("game-container");
 const avatarList = [
   "avatar_1",
   "avatar_2",
@@ -103,6 +104,7 @@ function setAvatarClickEvent(isBlinkingRunning) {
 // -----> Function n°4 => Update from Load to land State layout
 
 function updateLayoutOnStart() {
+  gameContainerArea.classList.add("gameOff");
   playerArea.classList.remove("landingState");
   playerArea.classList.add("gameOff");
   computerArea.classList.remove("landingState");
