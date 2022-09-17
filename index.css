@@ -249,24 +249,39 @@ h1 {
 
 .versusArea {
     position: absolute;
-    display: block;
-    bottom: 5%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    bottom: 10%;
     left: 50%;
     transform: translateX(-50%);
 
     border-radius: 10px;
-    height: 250px;
+    height: 160px;
     width: 500px;
-    background: rgb(30, 30, 30);
+    background: rgba(255, 255, 255, 0.375);
     margin: 20px auto;
 }
 
+.versusText {
+    /* margin: 5px;
+    height : 110px;
+    width: 110px;
+    padding: 5px; */
 
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 80px;
+
+
+    color: white;
+
+}
 
 /* ----------------------------------------------------------------------------------- */
 /* ------------------------------------ animation ------------------------------------ */
 /* ----------------------------------------------------------------------------------- */
-
 
 @keyframes lightening {
     0% {

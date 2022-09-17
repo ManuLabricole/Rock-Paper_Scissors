@@ -181,18 +181,34 @@ function displayVersusDiv(playerId, computerId) {
     let versusDiv = document.createElement("div");
     let newPlayerAvatarDiv = document.createElement("div");
     let imgPlayer = document.createElement("img");
+    let versusTextDiv = document.createElement("div");
     let newComputerAvatarDiv = document.createElement("div");
     let imgComputer = document.createElement("img");
 
     versusDiv.classList.add("versusArea");
 
-    // Add img with corresponding avatarList[X] avatar inside div
+    // Add img with corresponding to player-id selected inside div
 
     imgPlayer.id = playerId;
     imgPlayer.src = "./assets/img/avatar/" + playerId + ".png";
     newPlayerAvatarDiv.appendChild(imgPlayer);
     newPlayerAvatarDiv.classList.add("avatar-card");
+
+    // insert VS text in div
+    versusTextDiv.innerHTML = "VS";
+    versusTextDiv.classList.add("versusText");
+
+    // Add img with corresponding to randomChoice in blinking function
+    // Then the number is associated to the avatarList Array
+    imgComputer.id = avatarList[computerId - 1];
+    imgComputer.src =
+      "./assets/img/avatar/" + avatarList[computerId - 1] + ".png";
+    newComputerAvatarDiv.appendChild(imgComputer);
+    newComputerAvatarDiv.classList.add("avatar-card");
+
     versusDiv.appendChild(newPlayerAvatarDiv);
+    versusDiv.appendChild(versusTextDiv);
+    versusDiv.appendChild(newComputerAvatarDiv);
     body.appendChild(versusDiv);
-  }, 1200);
+  }, 1000);
 }
