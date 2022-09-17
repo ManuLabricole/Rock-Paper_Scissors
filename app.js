@@ -2,6 +2,10 @@ const avatarPlayerContainer = document.querySelector(".avatar-container");
 const avatarComputerContainer = document.querySelector(
   ".computer-avatar-container"
 );
+const states = ["loadState", "landingState", "gameOFF", "gameON"];
+let pageState = states[0];
+
+let playerAvatar = "";
 
 setTimeout(loadAnimation, 10); // --> ui-layout.js
 

@@ -4,6 +4,7 @@ const playerArea = document.getElementById("player-area");
 const gameboyArea = document.getElementById("gameboy-area");
 const computerArea = document.getElementById("computer-area");
 const gameContainerArea = document.getElementById("game-container");
+const body = document.querySelector("body");
 const avatarList = [
   "avatar_1",
   "avatar_2",
@@ -27,6 +28,8 @@ function loadAnimation() {
   bgImg.classList.add("landingState");
   gameboyArea.classList.remove("loadState");
   gameboyArea.classList.add("landingState");
+
+  pageState = "landingState";
 }
 
 // -----> Function n°2 => add Avatar with interaction
@@ -75,15 +78,15 @@ function getPlayerAvatarChoice(e) {
   //   If the click is on the DIV element add the class to the target
   if (targetClass.includes("avatar-card")) {
     e.target.classList.add("active");
-    // If the click is on the img child of DIV - get the parent and add the class
+    playerAvatar = Array.from(e.target.children)[0].id;
   } else {
+    // If the click is on the img child of DIV - get the parent and add the class
     e.target.parentElement.classList.add("active");
+    playerAvatar = e.target.id;
   }
 
   setAvatarClickEvent(isBlinkRunning);
   computerChoiceAnimation();
-  console.log("test");
-  //   return avatarPlayerContainerChild;
 }
 
 // ----> Function 3.2 => Update event Listener availabilities depending on computerChoice State
@@ -152,6 +155,7 @@ function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
     } else if (loopCount === -1) {
       isBlinkRunning = false;
       setAvatarClickEvent(isBlinkRunning);
+      triggerGameON(playerAvatar);
       return "run";
     }
     avatarBlinkloop(loopCount, counter, avatarTriggerNum);
@@ -164,4 +168,16 @@ function computerChoiceAnimation() {
   //   This loop aim to create dealy between change class of avatar. Otherwise the blink in the same time
   //   Main animation -> take number of loop, inside loop counter and treshold to end the loop
   avatarBlinkloop(2, 0, avatarTreshold);
+}
+
+// Function triggered when computerChoice is DONE
+// This function will get the two choices
+// Create a div with Avatar chosen : "Player VS Computer" display
+// Finally will add a START button to laumnch the game
+
+function triggerGameON(X) {
+  setTimeout(() => {
+    pageState = "gameOff";
+    console.log(X);
+  }, 1500);
 }
