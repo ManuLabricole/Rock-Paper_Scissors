@@ -151,14 +151,14 @@ function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
       avatarComputerContainerChild[counter - 1].classList.remove("active");
       loopCount = -1;
       counter = 0;
-      avatarTriggerNum = Math.floor(Math.random() * (avatarList.length - 1)); // random computer selection
+      avatarTriggerNum = Math.floor(Math.random() * avatarList.length); // random computer selection
       console.log(avatarTriggerNum);
     } else if (loopCount === -1) {
       isBlinkRunning = false;
       avatarComputerContainerChild[counter - 1].classList.remove("active");
       avatarComputerContainerChild[counter].classList.add("active");
       setAvatarClickEvent(isBlinkRunning);
-      //   displayVersusDiv(playerAvatar, avatarTriggerNum);
+      displayVersusDiv(playerAvatar, avatarTriggerNum);
       return "run";
     }
     avatarBlinkloop(loopCount, counter, avatarTriggerNum);
@@ -180,6 +180,14 @@ const computerChoiceAnimation = async () => {
 
 function displayVersusDiv(playerId, computerId) {
   pageState = "gameOff";
+  let previousVersusDiv = Array.from(
+    document.getElementsByClassName("versusArea")
+  );
+  //   If already ran, we have to remove the previsou display of result
+  if (previousVersusDiv[0]) {
+    previousVersusDiv[0].remove();
+  }
+
   let versusDiv = document.createElement("div");
   let newPlayerAvatarDiv = document.createElement("div");
   let imgPlayer = document.createElement("img");
@@ -203,8 +211,7 @@ function displayVersusDiv(playerId, computerId) {
   // Add img with corresponding to randomChoice in blinking function
   // Then the number is associated to the avatarList Array
   imgComputer.id = avatarList[computerId];
-  imgComputer.src =
-    "./assets/img/avatar/avatar_" + avatarList[computerId] + ".png";
+  imgComputer.src = "./assets/img/avatar/" + avatarList[computerId] + ".png";
   newComputerAvatarDiv.appendChild(imgComputer);
   newComputerAvatarDiv.classList.add("avatar-card");
 
