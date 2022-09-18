@@ -164,11 +164,12 @@ function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
 
 // Function triggered when avatar is selected by User, then trigger the computer choice & Animation
 
-function computerChoiceAnimation() {
+const computerChoiceAnimation = async () => {
   //   This loop aim to create dealy between change class of avatar. Otherwise the blink in the same time
   //   Main animation -> take number of loop, inside loop counter and treshold to end the loop
-  avatarBlinkloop(2, 0, avatarTreshold);
-}
+  const result = await avatarBlinkloop(2, 0, avatarTreshold);
+  console.log(result);
+};
 
 // Function triggered when computerChoice is DONE
 // This function will get the two choices
@@ -176,39 +177,37 @@ function computerChoiceAnimation() {
 // Finally will add a START button to laumnch the game
 
 function displayVersusDiv(playerId, computerId) {
-  setTimeout(() => {
-    pageState = "gameOff";
-    let versusDiv = document.createElement("div");
-    let newPlayerAvatarDiv = document.createElement("div");
-    let imgPlayer = document.createElement("img");
-    let versusTextDiv = document.createElement("div");
-    let newComputerAvatarDiv = document.createElement("div");
-    let imgComputer = document.createElement("img");
+  pageState = "gameOff";
+  let versusDiv = document.createElement("div");
+  let newPlayerAvatarDiv = document.createElement("div");
+  let imgPlayer = document.createElement("img");
+  let versusTextDiv = document.createElement("div");
+  let newComputerAvatarDiv = document.createElement("div");
+  let imgComputer = document.createElement("img");
 
-    versusDiv.classList.add("versusArea");
+  versusDiv.classList.add("versusArea");
 
-    // Add img with corresponding to player-id selected inside div
+  // Add img with corresponding to player-id selected inside div
 
-    imgPlayer.id = playerId;
-    imgPlayer.src = "./assets/img/avatar/" + playerId + ".png";
-    newPlayerAvatarDiv.appendChild(imgPlayer);
-    newPlayerAvatarDiv.classList.add("avatar-card");
+  imgPlayer.id = playerId;
+  imgPlayer.src = "./assets/img/avatar/" + playerId + ".png";
+  newPlayerAvatarDiv.appendChild(imgPlayer);
+  newPlayerAvatarDiv.classList.add("avatar-card");
 
-    // insert VS text in div
-    versusTextDiv.innerHTML = "VS";
-    versusTextDiv.classList.add("versusText");
+  // insert VS text in div
+  versusTextDiv.innerHTML = "VS";
+  versusTextDiv.classList.add("versusText");
 
-    // Add img with corresponding to randomChoice in blinking function
-    // Then the number is associated to the avatarList Array
-    imgComputer.id = avatarList[computerId - 1];
-    imgComputer.src =
-      "./assets/img/avatar/" + avatarList[computerId - 1] + ".png";
-    newComputerAvatarDiv.appendChild(imgComputer);
-    newComputerAvatarDiv.classList.add("avatar-card");
+  // Add img with corresponding to randomChoice in blinking function
+  // Then the number is associated to the avatarList Array
+  imgComputer.id = avatarList[computerId - 1];
+  imgComputer.src =
+    "./assets/img/avatar/" + avatarList[computerId - 1] + ".png";
+  newComputerAvatarDiv.appendChild(imgComputer);
+  newComputerAvatarDiv.classList.add("avatar-card");
 
-    versusDiv.appendChild(newPlayerAvatarDiv);
-    versusDiv.appendChild(versusTextDiv);
-    versusDiv.appendChild(newComputerAvatarDiv);
-    body.appendChild(versusDiv);
-  }, 1000);
+  versusDiv.appendChild(newPlayerAvatarDiv);
+  versusDiv.appendChild(versusTextDiv);
+  versusDiv.appendChild(newComputerAvatarDiv);
+  body.appendChild(versusDiv);
 }
