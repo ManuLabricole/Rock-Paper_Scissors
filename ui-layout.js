@@ -152,10 +152,13 @@ function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
       loopCount = -1;
       counter = 0;
       avatarTriggerNum = Math.floor(Math.random() * (avatarList.length - 1)); // random computer selection
+      console.log(avatarTriggerNum);
     } else if (loopCount === -1) {
       isBlinkRunning = false;
+      avatarComputerContainerChild[counter - 1].classList.remove("active");
+      avatarComputerContainerChild[counter].classList.add("active");
       setAvatarClickEvent(isBlinkRunning);
-      displayVersusDiv(playerAvatar, avatarTriggerNum);
+      //   displayVersusDiv(playerAvatar, avatarTriggerNum);
       return "run";
     }
     avatarBlinkloop(loopCount, counter, avatarTriggerNum);
@@ -167,8 +170,7 @@ function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
 const computerChoiceAnimation = async () => {
   //   This loop aim to create dealy between change class of avatar. Otherwise the blink in the same time
   //   Main animation -> take number of loop, inside loop counter and treshold to end the loop
-  const result = await avatarBlinkloop(2, 0, avatarTreshold);
-  console.log(result);
+  await avatarBlinkloop(2, 0, avatarTreshold);
 };
 
 // Function triggered when computerChoice is DONE
@@ -200,9 +202,9 @@ function displayVersusDiv(playerId, computerId) {
 
   // Add img with corresponding to randomChoice in blinking function
   // Then the number is associated to the avatarList Array
-  imgComputer.id = avatarList[computerId - 1];
+  imgComputer.id = avatarList[computerId];
   imgComputer.src =
-    "./assets/img/avatar/" + avatarList[computerId - 1] + ".png";
+    "./assets/img/avatar/avatar_" + avatarList[computerId] + ".png";
   newComputerAvatarDiv.appendChild(imgComputer);
   newComputerAvatarDiv.classList.add("avatar-card");
 
