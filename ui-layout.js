@@ -4,6 +4,7 @@ const playerArea = document.getElementById("player-area");
 const gameboyArea = document.getElementById("gameboy-area");
 const computerArea = document.getElementById("computer-area");
 const gameContainerArea = document.getElementById("game-container");
+const gbScreen = document.getElementById("gb-screen");
 const body = document.querySelector("body");
 const avatarList = [
   "avatar_1",
@@ -20,8 +21,8 @@ const avatarTreshold = avatarList.length;
 // State constant to handle prevent handling and co
 let isBlinkRunning = false;
 
+// --------------------------------------------------------------------------------------------//
 // -----> Function n°1 => Pass layout style from Load --> Land
-
 // First by Timeout function first called in app.js
 function loadAnimation() {
   bgImg.classList.remove("loadState");
@@ -32,6 +33,7 @@ function loadAnimation() {
   pageState = "landingState";
 }
 
+// --------------------------------------------------------------------------------------------//
 // -----> Function n°2 => add Avatar with interaction
 
 function addAvatar(filledDiv) {
@@ -54,7 +56,7 @@ function addAvatar(filledDiv) {
     filledDiv.appendChild(newDiv);
   });
 }
-
+// --------------------------------------------------------------------------------------------//
 // -----> Function n°3 => get avatar player choice
 
 function getPlayerAvatarChoice(e) {
@@ -89,6 +91,7 @@ function getPlayerAvatarChoice(e) {
   computerChoiceAnimation();
 }
 
+// --------------------------------------------------------------------------------------------//
 // ----> Function 3.2 => Update event Listener availabilities depending on computerChoice State
 function setAvatarClickEvent(isBlinkingRunning) {
   if (isBlinkingRunning === true) {
@@ -104,6 +107,7 @@ function setAvatarClickEvent(isBlinkingRunning) {
   }
 }
 
+// --------------------------------------------------------------------------------------------//
 // -----> Function n°4 => Update from Load to land State layout
 
 function updateLayoutOnStart() {
@@ -116,8 +120,12 @@ function updateLayoutOnStart() {
   gameboyArea.classList.add("gameOff");
   startButton.classList.remove("detected");
   startButton.classList.add("gameOff");
+  gbScreen.classList.add("gameOff");
+
+  pageState = "gameOff";
 }
 
+// --------------------------------------------------------------------------------------------//
 // -----> Function n°5 => Animation for computer random avatar Choice
 
 function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
@@ -165,14 +173,15 @@ function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
   }, 40);
 }
 
+// --------------------------------------------------------------------------------------------//
 // Function triggered when avatar is selected by User, then trigger the computer choice & Animation
-
 const computerChoiceAnimation = async () => {
   //   This loop aim to create dealy between change class of avatar. Otherwise the blink in the same time
   //   Main animation -> take number of loop, inside loop counter and treshold to end the loop
   await avatarBlinkloop(2, 0, avatarTreshold);
 };
 
+// --------------------------------------------------------------------------------------------//
 // Function triggered when computerChoice is DONE
 // This function will get the two choices
 // Create a div with Avatar chosen : "Player VS Computer" display
@@ -219,4 +228,8 @@ function displayVersusDiv(playerId, computerId) {
   versusDiv.appendChild(versusTextDiv);
   versusDiv.appendChild(newComputerAvatarDiv);
   body.appendChild(versusDiv);
+}
+
+function displayPlayButton() {
+  console.log("async launch");
 }
