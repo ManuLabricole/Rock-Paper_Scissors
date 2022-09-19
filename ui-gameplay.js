@@ -1,19 +1,21 @@
 // -----> function n°1 => Start btn of gameboy
-const startButton = document.getElementById("start-button");
 
-function startbtn() {
-  startButton.addEventListener("mouseenter", function (e) {
-    let startButtonClass = e.target.classList.value;
-    if (startButtonClass.includes("detected")) {
-      return;
-    } else if (startButtonClass.includes("gameOff")) {
-      return;
-    } else {
-      startButton.classList.add("detected");
-    }
-  });
+// ---> Function n°2 : Button Start functions calling
 
-  startButton.addEventListener("click", () => {
-    updateLayoutOnStart();
-  });
+function startButtonPressed(state) {
+  console.log(state);
+  switch (state) {
+    case "loadingState":
+      break;
+    case "landingState":
+      passToGameOffState();
+      console.log("We are in landing state Do...");
+      break;
+    case "gameOff":
+      alert("Non");
+      passToLandingState();
+      console.log("We are in landing state Do...");
+  }
 }
+
+// ---> Function n°2

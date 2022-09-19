@@ -1,4 +1,5 @@
 // -----> Function n°1 => First Animation when page loaded
+const startButton = document.getElementById("start-button");
 const bgImg = document.getElementById("bg_img");
 const playerArea = document.getElementById("player-area");
 const gameboyArea = document.getElementById("gameboy-area");
@@ -29,7 +30,54 @@ function loadAnimation() {
   bgImg.classList.add("landingState");
   gameboyArea.classList.remove("loadState");
   gameboyArea.classList.add("landingState");
+  createStartButton();
+  pageState = "landingState";
+}
 
+// -----> Function n°1-2 => Create Start button
+
+function createStartButton() {
+  // Add style and hover
+  startButton.addEventListener("mouseenter", function (e) {
+    let startButtonClass = e.target.classList.value;
+    if (startButtonClass.includes("detected")) {
+      return;
+    } else if (startButtonClass.includes("gameOff")) {
+      return;
+    } else {
+      startButton.classList.add("detected");
+    }
+  });
+  startButton.addEventListener("click", () => {
+    startButtonPressed(pageState);
+  });
+}
+
+function passToGameOffState() {
+  gameContainerArea.classList.add("gameOff");
+  playerArea.classList.remove("landingState");
+  playerArea.classList.add("gameOff");
+  computerArea.classList.remove("landingState");
+  computerArea.classList.add("gameOff");
+  gameboyArea.classList.remove("landingState");
+  gameboyArea.classList.add("gameOff");
+  startButton.classList.remove("detected");
+  startButton.classList.add("gameOff");
+  gbScreen.classList.add("gameOff");
+  pageState = "gameOff";
+}
+
+function passToLandingState() {
+  gameContainerArea.classList.remove("gameOff");
+  playerArea.classList.remove("gameOff");
+  playerArea.classList.add("landingState");
+  computerArea.classList.remove("gameOff");
+  computerArea.classList.add("landingState");
+  gameboyArea.classList.remove("gameOff");
+  gameboyArea.classList.add("landingState");
+  startButton.classList.remove("gameOff");
+  //   startButton.classList.add("detected");
+  gbScreen.classList.remove("gameOff");
   pageState = "landingState";
 }
 
@@ -109,21 +157,6 @@ function setAvatarClickEvent(isBlinkingRunning) {
 
 // --------------------------------------------------------------------------------------------//
 // -----> Function n°4 => Update from Load to land State layout
-
-function updateLayoutOnStart() {
-  gameContainerArea.classList.add("gameOff");
-  playerArea.classList.remove("landingState");
-  playerArea.classList.add("gameOff");
-  computerArea.classList.remove("landingState");
-  computerArea.classList.add("gameOff");
-  gameboyArea.classList.remove("landingState");
-  gameboyArea.classList.add("gameOff");
-  startButton.classList.remove("detected");
-  startButton.classList.add("gameOff");
-  gbScreen.classList.add("gameOff");
-
-  pageState = "gameOff";
-}
 
 // --------------------------------------------------------------------------------------------//
 // -----> Function n°5 => Animation for computer random avatar Choice
