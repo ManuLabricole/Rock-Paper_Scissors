@@ -203,9 +203,14 @@ h1 {
 .gb-screen.gameOff {
     top: 27%;
     left: 50%; transform: translateX(-50%);
-    height: 180px;
-    width: 205px;
-    background: transparent;
+    height: 95px;
+    width: 138px;
+    background: rgb(88,88,90);
+
+    transition: 0.2s;
+
+    justify-content: center;
+    align-items: center;
 }
 
 .computer-area.landingState {
