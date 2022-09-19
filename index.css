@@ -190,6 +190,24 @@ h1 {
     inset 2px -2px 2px white;
 }
 
+.gb-screen {
+    position: absolute;
+    top: 27%;
+    left: 50%; transform: translateX(-50%);
+    height: 280px;
+    width: 405px;
+    border-radius: 5px;
+    background: rgb(88,88,90);
+    /* border: solid 2px red; */
+}
+.gb-screen.gameOff {
+    top: 27%;
+    left: 50%; transform: translateX(-50%);
+    height: 180px;
+    width: 205px;
+    background: transparent;
+}
+
 .computer-area.landingState {
     display: block;
     visibility: hidden;
@@ -266,17 +284,14 @@ h1 {
 .versusText {
     /* margin: 5px;
     height : 110px;
-    width: 110px;
-    padding: 5px; */
-
+    width: 110px;*/
+    padding: 20px;
     display: flex;
     justify-content: center;
     text-align: center;
     font-size: 80px;
-
-
-    color: white;
-
+    color:rgba(37, 37, 37, 0.702);
+    
 }
 
 /* ----------------------------------------------------------------------------------- */
