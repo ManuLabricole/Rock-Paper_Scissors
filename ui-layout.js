@@ -75,7 +75,7 @@ function passToLandingState() {
   computerArea.classList.add("landingState");
   gameboyArea.classList.remove("gameOff");
   gameboyArea.classList.add("landingState");
-  startButton.classList.remove("gameOff");
+  startButton.classList.remove("gameOff", "detected");
   //   startButton.classList.add("detected");
   gbScreen.classList.remove("gameOff");
   pageState = "landingState";
