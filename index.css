@@ -18,7 +18,6 @@
 #bg_img.loadState {
     height: 100%;
     width: 130%;
-
     transform: translateX(-500px);
 }
 #bg_img.landingState {
@@ -58,9 +57,8 @@
     background-color: rgba(143, 19, 210, 0.1);
     backdrop-filter: blur(10px);
     -webkit-transition: 
-    backdrop-filter 0.5s ease-in,
-    background-color 0.5s ease-in;
-
+    backdrop-filter 0.2s ease-in,
+    background-color 0.2s ease-in;
 }
 
 .player-area.landingState {
@@ -75,8 +73,8 @@
     visibility: visible;
     opacity: 1;
     -webkit-transition: 
-    visibility 0.5s ease-in,
-    opacity 0.5s ease-in;
+    visibility 0.2s ease-in,
+    opacity 0.2s ease-in;
     /* border: solid 1px red; */
 }
 
@@ -148,8 +146,8 @@ h1 {
     max-height: 700px;
 
     opacity: 1;
-    transition: 0.5s ease-in;
-    transition-delay: 0.5s;
+    transition: 0.2s ease-in;
+    /* transition-delay: 0.5s; */
 }
 
 .gameboy-area.gameOff {
@@ -161,7 +159,7 @@ h1 {
 
     /* border: solid 1px green; */
 
-    transition: 0.2s;
+    transition: 0.2s ease-in;
 }
 
 .start-button.detected {
@@ -198,7 +196,8 @@ h1 {
     width: 405px;
     border-radius: 5px;
     background: rgb(88,88,90);
-    transition: 0.2s;
+    transition: 0.2s ease-in;
+
     /* border: solid 2px red; */
 }
 .gb-screen.gameOff {
@@ -208,7 +207,7 @@ h1 {
     width: 138px;
     background: rgb(88,88,90);
 
-    transition: 0.2s;
+    transition: 0.2s ease-in;
 
     justify-content: center;
     align-items: center;
@@ -288,9 +287,6 @@ h1 {
 }
 
 .versusText {
-    /* margin: 5px;
-    height : 110px;
-    width: 110px;*/
     padding: 20px;
     display: flex;
     justify-content: center;
