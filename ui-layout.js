@@ -146,11 +146,13 @@ function setAvatarClickEvent(isBlinkingRunning) {
     avatarPlayerContainerChild.forEach((avatarDiv) => {
       avatarDiv.removeEventListener("click", getPlayerAvatarChoice);
       avatarDiv.style.cursor = "none";
+      console.log("avatar Click triggrerd TRUE");
     });
   } else if (isBlinkingRunning === false) {
     avatarPlayerContainerChild.forEach((avatarDiv) => {
       avatarDiv.addEventListener("click", getPlayerAvatarChoice);
       avatarDiv.style.cursor = "pointer";
+      console.log("avatar Click triggrerd False");
     });
   }
 }
@@ -174,11 +176,11 @@ function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
 
   setTimeout(function () {
     if (counter === 0) {
-      // Initilization
+      // Initilization : Active the first avatar
       avatarComputerContainerChild[counter].classList.add("active");
       counter++;
     } else if (counter > 0 && counter < avatarTriggerNum) {
-      // In between
+      // In between : Desactive previous & active current until counter = last avatar
       avatarComputerContainerChild[counter - 1].classList.remove("active");
       avatarComputerContainerChild[counter].classList.add("active");
       counter++;
@@ -209,9 +211,9 @@ function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
 // --------------------------------------------------------------------------------------------//
 // Function triggered when avatar is selected by User, then trigger the computer choice & Animation
 const computerChoiceAnimation = async () => {
+  await avatarBlinkloop(2, 0, avatarTreshold);
   //   This loop aim to create dealy between change class of avatar. Otherwise the blink in the same time
   //   Main animation -> take number of loop, inside loop counter and treshold to end the loop
-  await avatarBlinkloop(2, 0, avatarTreshold);
 };
 
 // --------------------------------------------------------------------------------------------//
@@ -261,8 +263,13 @@ function displayVersusDiv(playerId, computerId) {
   versusDiv.appendChild(versusTextDiv);
   versusDiv.appendChild(newComputerAvatarDiv);
   body.appendChild(versusDiv);
+
+  console.log();
+  displayPlayButton();
 }
 
 function displayPlayButton() {
-  console.log("async launch");
+  setTimeout(function () {
+    console.log("async launch");
+  }, 1000);
 }
