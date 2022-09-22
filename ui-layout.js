@@ -270,6 +270,13 @@ function displayVersusDiv(playerId, computerId) {
 
 function displayPlayButton() {
   setTimeout(function () {
-    console.log("async launch");
-  }, 1000);
+    let playButton = document.createElement("div");
+    playButton.classList.add("playButton");
+
+    let playImg = document.createElement("img");
+    playImg.id = "playButtonImgId";
+    playImg.src = "./assets/img/playButton.png";
+    playButton.appendChild(playImg);
+    gbScreen.appendChild(playButton);
+  }, 10);
 }

@@ -9,13 +9,18 @@ function startButtonPressed(state) {
       break;
     case "landingState":
       passToGameOffState();
-      console.log("We are in landing state Do...");
+      console.log("We are in landing state");
       break;
     case "gameOff":
-      alert("Non");
       passToLandingState();
-      console.log("We are in landing state Do...");
+      console.log("We are in gameoff state Do...");
   }
 }
 
 // ---> Function n°2
+
+function playButtonPressed() {
+  // Remove play button
+  // Change class of layout to make GB bigger
+  // Lannch GameplayOn
+}
