@@ -11,7 +11,6 @@ setTimeout(loadAnimation, 10); // --> ui-layout.js
 // ---> Function n°2 : Button Start functions calling
 
 function startButtonPressed(state) {
-  console.log(state);
   switch (state) {
     case "loadingState":
       break;
@@ -19,11 +18,9 @@ function startButtonPressed(state) {
       addAvatar(avatarPlayerContainer); // -->ui-layout.js
       addAvatar(avatarComputerContainer); // -->ui-layout.js
       passToGameOffState();
-      console.log("We are in landing state");
       break;
     case "gameOff":
       passToLandingState();
-      console.log("We are in gameoff state Do...");
   }
 }
 
@@ -31,8 +28,8 @@ function startButtonPressed(state) {
 
 function playButtonPressed() {
   removePlayButton();
-  playerArea.classList.remove("gameOff");
-  playerArea.classList.add("gameOn");
+  passToGameOnState();
+  removeVersusDiv();
   // Change class of layout to make GB bigger
   // Lannch GameplayOn
 }

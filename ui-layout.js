@@ -43,7 +43,7 @@ function loadAnimation() {
 // -----> Function n°1-2 => Create Start button
 
 function createStartButton() {
-  // Add style and hover
+  // Add style to attract user attention and remove on hover
   startButton.addEventListener("mouseenter", function (e) {
     let startButtonClass = e.target.classList.value;
     if (startButtonClass.includes("detected")) {
@@ -87,10 +87,20 @@ function passToLandingState() {
   pageState = "landingState";
 }
 
+function passToGameOnState() {
+  playerArea.classList.remove("gameOff");
+  playerArea.classList.add("gameOn");
+  computerArea.classList.remove("gameOff");
+  computerArea.classList.add("gameOn");
+
+  pageState = "gameOn";
+}
+
 // --------------------------------------------------------------------------------------------//
 // -----> Function n°2 => add Avatar with interaction
 
 function addAvatar(filledDiv) {
+  let avatar;
   avatarList.forEach((name) => {
     // Create div with classList "avatar-card"
     let newDiv = document.createElement("div");
@@ -228,8 +238,7 @@ const computerChoiceAnimation = async () => {
 // Create a div with Avatar chosen : "Player VS Computer" display
 // Finally will add a START button to laumnch the game
 
-function displayVersusDiv(playerId, computerId) {
-  pageState = "gameOff";
+function removeVersusDiv() {
   let previousVersusDiv = Array.from(
     document.getElementsByClassName("versusArea")
   );
@@ -237,6 +246,11 @@ function displayVersusDiv(playerId, computerId) {
   if (previousVersusDiv[0]) {
     previousVersusDiv[0].remove();
   }
+}
+
+function displayVersusDiv(playerId, computerId) {
+  pageState = "gameOff";
+  removeVersusDiv();
 
   let versusDiv = document.createElement("div");
   let newPlayerAvatarDiv = document.createElement("div");
