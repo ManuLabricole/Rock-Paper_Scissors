@@ -61,7 +61,8 @@
     background-color 0.2s ease-in;
 }
 
-.player-area.landingState {
+.player-area.landingState,
+.gameOn {
     display: block;
     visibility: hidden;
     opacity: 0;
@@ -170,7 +171,7 @@ h1 {
     position: absolute;
     animation: none;
     top: 59%;left: 15%;
-    height: 4.2%;
+    height: 3.9%;
     width: 10%;
     border-radius: 10px;
 
@@ -301,17 +302,18 @@ h1 {
 /* ----------------------------------------------------------------------------------- */
 .playButton {
     height: 100%;
-    width: 90%;
-    margin: auto auto;
-    background: red;
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
 #playButtonImgId {
     width: 100%;
+    cursor: pointer;
 }
-playButtonId
+
 /* ----------------------------------------------------------------------------------- */
 /* ------------------------------------ animation ------------------------------------ */
 /* ----------------------------------------------------------------------------------- */
