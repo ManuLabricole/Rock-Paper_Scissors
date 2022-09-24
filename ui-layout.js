@@ -92,6 +92,9 @@ function passToGameOnState() {
   playerArea.classList.add("gameOn");
   computerArea.classList.remove("gameOff");
   computerArea.classList.add("gameOn");
+  gameboyArea.classList.remove("gameOff");
+  gameboyArea.classList.add("gameOn");
+  gameContainerArea.classList.remove("gameOff");
 
   pageState = "gameOn";
 }

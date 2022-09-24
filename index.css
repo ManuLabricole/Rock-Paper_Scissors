@@ -62,7 +62,7 @@
 }
 
 .player-area.landingState,
-.gameOn {
+.player-area.gameOn {
     display: block;
     visibility: hidden;
     opacity: 0;
@@ -139,7 +139,8 @@ h1 {
     transform: scale(0.5);
     opacity: 0;
 }
-.gameboy-area.landingState {
+.gameboy-area.landingState,
+.gameOn {
     position: relative;
     min-width: 1080px;
     min-height: 700px;
@@ -189,7 +190,8 @@ h1 {
     inset 2px -2px 2px white;
 }
 
-.gb-screen {
+.gb-screen,
+.gb-screen.gameOn {
     position: absolute;
     top: 27%;
     left: 50%; transform: translateX(-50%);
