@@ -1,4 +1,9 @@
 // -----> Function n°1 => First Animation when page loaded
+const body = document.querySelector("body");
+const avatarPlayerContainer = document.querySelector(".avatar-container");
+const avatarComputerContainer = document.querySelector(
+  ".computer-avatar-container"
+);
 const startButton = document.getElementById("start-button");
 const bgImg = document.getElementById("bg_img");
 const playerArea = document.getElementById("player-area");
@@ -6,7 +11,8 @@ const gameboyArea = document.getElementById("gameboy-area");
 const computerArea = document.getElementById("computer-area");
 const gameContainerArea = document.getElementById("game-container");
 const gbScreen = document.getElementById("gb-screen");
-const body = document.querySelector("body");
+
+// List created to get "avatar" string to load avatar image in later functions
 const avatarList = [
   "avatar_1",
   "avatar_2",
@@ -264,18 +270,28 @@ function displayVersusDiv(playerId, computerId) {
   versusDiv.appendChild(newComputerAvatarDiv);
   body.appendChild(versusDiv);
 
-  console.log();
   displayPlayButton();
 }
 
+function removePlayButton() {
+  // If two choices of avatar, remove the previous playButton added
+  if (document.getElementById("playButton")) {
+    let previsousPlayButton = document.getElementById("playButton");
+    previsousPlayButton.remove();
+  }
+}
+
 function displayPlayButton() {
+  removePlayButton();
+  // Timeout function to add the play Button because of blinking Animation
   setTimeout(function () {
     let playButton = document.createElement("div");
-    playButton.classList.add("playButton");
-
     let playImg = document.createElement("img");
+    playButton.id = "playButton";
+    playButton.classList.add("playButton");
     playImg.id = "playButtonImgId";
     playImg.src = "./assets/img/playButton.png";
+    playButton.addEventListener("click", playButtonPressed);
     playButton.appendChild(playImg);
     gbScreen.appendChild(playButton);
   }, 10);
