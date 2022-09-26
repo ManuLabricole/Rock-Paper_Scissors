@@ -131,6 +131,8 @@ const addAvatar = async (filledDiv) => {
   }
 };
 
+// --------------------------------------------------------------------------------------------//
+// Function triggered when user select an avatar ----------------------------------------------//
 // ----> Function n°5 : Blinking animation & random computer choice in last loop
 function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
   let avatarComputerContainer = document.querySelector(
@@ -187,6 +189,8 @@ function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
 // Create a div with Avatar chosen : "Player VS Computer" display
 // Finally will add a START button to laumnch the game
 
+// ----> Function n°6 : Create | Remove and Display Results of avatar choices
+
 // If already displayed, removed the previous to prevent superposition
 function removeVersusDiv() {
   let previousVersusDiv = Array.from(
@@ -237,6 +241,8 @@ function displayVersusDiv(playerId, computerId) {
   displayPlayButton();
 }
 
+// ----> Function n°7 : Create | Remove and Display PlayButton
+
 function removePlayButton() {
   // If two choices of avatar, remove the previous playButton added
   if (document.getElementById("playButton")) {
@@ -261,7 +267,10 @@ function displayPlayButton() {
   }, 10);
 }
 
-// Function called when started is pressed when we are in landing state
+// ------------------------------------------------------------------------------------------//
+
+// -----> Function n°8 :
+// Function called when startButton is pressed when we are in landing state
 function passToGameOffState() {
   // Id added when createPlayer/ComputerArea function is called
   const playerArea = document.getElementById("player-area");
@@ -277,4 +286,19 @@ function passToGameOffState() {
   startButton.classList.add("gameOff");
   gbScreen.classList.add("gameOff");
   pageState = "gameOff";
+}
+
+// Function called when startButton is pressed when we are in gameOff state
+function passToLandingState() {
+  gameContainerArea.classList.remove("gameOff");
+  playerArea.classList.remove("gameOff");
+  playerArea.classList.add("landingState");
+  computerArea.classList.remove("gameOff");
+  computerArea.classList.add("landingState");
+  gameboyArea.classList.remove("gameOff");
+  gameboyArea.classList.add("landingState");
+  startButton.classList.remove("gameOff", "detected");
+  //   startButton.classList.add("detected");
+  gbScreen.classList.remove("gameOff");
+  pageState = "landingState";
 }
