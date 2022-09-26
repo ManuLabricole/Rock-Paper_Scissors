@@ -15,21 +15,27 @@ function startButtonPressed(state) {
     case "loadingState":
       break;
     case "landingState":
-      addAvatar(avatarPlayerContainer); // -->ui-layout.js
-      addAvatar(avatarComputerContainer); // -->ui-layout.js
-      passToGameOffState();
+      // f1 --> RPS
+      //        ---> Create player Area Div
+      createPlayerArea();
+      //        ---> Create Computer Area Div
+      //        ---> Add them on layout at the right place
+      // ->
+      //addAvatar(avatarPlayerContainer); // -->ui-layout.js
+      //addAvatar(avatarComputerContainer); // -->ui-layout.js
+      //passToGameOffState();
       break;
     case "gameOff":
-      passToLandingState();
+    //passToLandingState();
   }
 }
 
 // ---> Function n°2
 
-function playButtonPressed() {
-  removePlayButton();
-  passToGameOnState();
-  removeVersusDiv();
-  // Change class of layout to make GB bigger
-  // Lannch GameplayOn
-}
+// function playButtonPressed() {
+//   removePlayButton();
+//   passToGameOnState();
+//   removeVersusDiv();
+//   // Change class of layout to make GB bigger
+//   // Lannch GameplayOn
+// }
