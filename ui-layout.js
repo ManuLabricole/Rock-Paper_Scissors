@@ -3,14 +3,8 @@ const body = document.querySelector("body");
 const gameContainerArea = document.getElementById("game-container");
 const gameboyArea = document.getElementById("gameboy-area");
 
-const avatarComputerContainer = document.querySelector(
-  ".computer-avatar-container"
-);
 const startButton = document.getElementById("start-button");
 const bgImg = document.getElementById("bg_img");
-const playerArea = document.getElementById("player-area");
-
-const computerArea = document.getElementById("computer-area");
 
 const gbScreen = document.getElementById("gb-screen");
 
@@ -94,6 +88,9 @@ function createComputerArea() {
   gameContainerArea.appendChild(computerAreaDiv);
 }
 
+// --------------------------------------------------------------------------------------------//
+// -----> Function n°4 => Add avatar in computer or player Area depednding on input
+
 const addAvatar = async (filledDiv) => {
   // Need to wait that the previous main Div is created to call query selector
   console.log(filledDiv);
@@ -136,7 +133,7 @@ const addAvatar = async (filledDiv) => {
 
 function getPlayerAvatarChoice(e) {
   // html collection to Array to use forEach() method
-  //   let avatarPlayerContainerChild = Array.from(avatarPlayerContainer.children);
+  let avatarPlayerContainer = document.querySelector(".avatar-container");
   avatarPlayerContainerChild = Array.from(avatarPlayerContainer.children);
   let targetClass = e.target.classList.value;
 
@@ -168,6 +165,9 @@ function getPlayerAvatarChoice(e) {
 
 // Function called when started is pressed when we are in landing state
 function passToGameOffState() {
+  // Id added when createPlayer/ComputerArea function is called
+  const playerArea = document.getElementById("player-area");
+  const computerArea = document.getElementById("computer-area");
   gameContainerArea.classList.add("gameOff");
   playerArea.classList.remove("landingState");
   playerArea.classList.add("gameOff");
