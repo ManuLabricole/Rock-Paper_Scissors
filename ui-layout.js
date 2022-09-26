@@ -70,8 +70,38 @@ function createPlayerArea() {
   const selectPlayerH1 = document.createElement("h1");
   const avatarPlayerContainer = document.createElement("div");
   playerAreaDiv.id = "player-area";
-  playerAreaDiv.classList = "player-area gameOff";
+  playerAreaDiv.classList = "player-area landingState";
+  selectPlayerH1.innerHTML = "SELECT PLAYER";
+  selectPlayerH1.id = "selectPlayer";
+  avatarPlayerContainer.classList = "avatar-container";
 
+  playerAreaDiv.appendChild(selectPlayerH1);
+  playerAreaDiv.appendChild(avatarPlayerContainer);
   gameContainerArea.insertBefore(playerAreaDiv, gameboyArea);
-  return;
+  console.log("Create");
 }
+
+const addAvatar = async (filledDiv) => {
+  await createPlayerArea();
+
+  console.log(filledDiv);
+
+  // avatarList.forEach((name) => {
+  //   // Create div with classList "avatar-card"
+  //   let newDiv = document.createElement("div");
+  //   // Add img with corresponding avatarList[X] avatar inside div
+  //   let img = document.createElement("img");
+  //   img.id = `${name}`;
+  //   img.src = "./assets/img/avatar/" + `${name}` + ".png";
+  //   newDiv.appendChild(img);
+
+  //   // Add the functions to each DIV per avatar IF in player selection. Computer Avatar have no interaction
+  //   if (filledDiv === avatarPlayerContainer) {
+  //     newDiv.classList.add("avatar-card");
+  //     newDiv.classList.add("player");
+  //     newDiv.addEventListener("click", getPlayerAvatarChoice);
+  //   }
+  //   newDiv.classList.add("avatar-card");
+  //   filledDiv.appendChild(newDiv);
+  // });
+};

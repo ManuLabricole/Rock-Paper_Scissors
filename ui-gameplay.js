@@ -18,6 +18,8 @@ function startButtonPressed(state) {
       // f1 --> RPS
       //        ---> Create player Area Div
       createPlayerArea();
+      addAvatar("avatar-container");
+      // addAvatar(avatarPlayerContainer);
       //        ---> Create Computer Area Div
       //        ---> Add them on layout at the right place
       // ->
