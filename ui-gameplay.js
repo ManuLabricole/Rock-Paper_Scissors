@@ -62,11 +62,32 @@ function getPlayerAvatarChoice(e) {
 
   // These two functions are called in layout.js
   setAvatarClickEvent(isBlinkRunning);
-  computerChoiceAnimation();
+  removePlayButton();
+  removeVersusDiv();
+
+  avatarBlinkloop(2, 0, avatarTreshold);
 }
 
 // --------------------------------------------------------------------------------------------//
-// ---> Function n°4 : Player click on Play and Launch the game
+// ----> Function n°4 => Update event Listener availabilities depending on computerChoice State
+function setAvatarClickEvent(isBlinkingRunning) {
+  if (isBlinkingRunning === true) {
+    avatarPlayerContainerChild.forEach((avatarDiv) => {
+      avatarDiv.removeEventListener("click", getPlayerAvatarChoice);
+      avatarDiv.style.cursor = "none";
+      console.log("avatar Click triggrerd TRUE");
+    });
+  } else if (isBlinkingRunning === false) {
+    avatarPlayerContainerChild.forEach((avatarDiv) => {
+      avatarDiv.addEventListener("click", getPlayerAvatarChoice);
+      avatarDiv.style.cursor = "pointer";
+      console.log("avatar Click triggrerd False");
+    });
+  }
+}
+
+// --------------------------------------------------------------------------------------------//
+// ---> Function n°5 : Player click on Play and Launch the game
 
 function playButtonPressed() {
   removePlayButton();

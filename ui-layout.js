@@ -131,23 +131,7 @@ const addAvatar = async (filledDiv) => {
   }
 };
 
-// --------------------------------------------------------------------------------------------//
-// ----> Function 5 => Update event Listener availabilities depending on computerChoice State
-function setAvatarClickEvent(isBlinkingRunning) {
-  if (isBlinkingRunning === true) {
-    avatarPlayerContainerChild.forEach((avatarDiv) => {
-      avatarDiv.removeEventListener("click", getPlayerAvatarChoice);
-      avatarDiv.style.cursor = "none";
-      console.log("avatar Click triggrerd TRUE");
-    });
-  } else if (isBlinkingRunning === false) {
-    avatarPlayerContainerChild.forEach((avatarDiv) => {
-      avatarDiv.addEventListener("click", getPlayerAvatarChoice);
-      avatarDiv.style.cursor = "pointer";
-      console.log("avatar Click triggrerd False");
-    });
-  }
-}
+// ----> Function n°5 : Blinking animation & random computer choice in last loop
 function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
   let avatarComputerContainer = document.querySelector(
     ".computer-avatar-container"
@@ -198,18 +182,12 @@ function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
 }
 
 // --------------------------------------------------------------------------------------------//
-// Function triggered when avatar is selected by User, then trigger the computer choice & Animation
-const computerChoiceAnimation = async () => {
-  await avatarBlinkloop(2, 0, avatarTreshold);
-  //   This loop aim to create dealy between change class of avatar. Otherwise the blink in the same time
-  //   Main animation -> take number of loop, inside loop counter and treshold to end the loop
-};
-// --------------------------------------------------------------------------------------------//
 // Function triggered when computerChoice is DONE
-// This function will get the two choices
+// This function will get & Display the two choices
 // Create a div with Avatar chosen : "Player VS Computer" display
 // Finally will add a START button to laumnch the game
 
+// If already displayed, removed the previous to prevent superposition
 function removeVersusDiv() {
   let previousVersusDiv = Array.from(
     document.getElementsByClassName("versusArea")
