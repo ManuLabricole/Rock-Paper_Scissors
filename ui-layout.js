@@ -78,30 +78,105 @@ function createPlayerArea() {
   playerAreaDiv.appendChild(selectPlayerH1);
   playerAreaDiv.appendChild(avatarPlayerContainer);
   gameContainerArea.insertBefore(playerAreaDiv, gameboyArea);
-  console.log("Create");
+}
+function createComputerArea() {
+  const computerAreaDiv = document.createElement("div");
+  const selectComputerH1 = document.createElement("h1");
+  const avatarComputerContainer = document.createElement("div");
+  computerAreaDiv.id = "computer-area";
+  computerAreaDiv.classList = "computer-area landingState";
+  selectComputerH1.innerHTML = "COMPUTER CHOICE...";
+  selectComputerH1.id = "computerPlayer";
+  avatarComputerContainer.classList = "computer-avatar-container";
+
+  computerAreaDiv.appendChild(selectComputerH1);
+  computerAreaDiv.appendChild(avatarComputerContainer);
+  gameContainerArea.appendChild(computerAreaDiv);
 }
 
 const addAvatar = async (filledDiv) => {
-  await createPlayerArea();
-
+  // Need to wait that the previous main Div is created to call query selector
   console.log(filledDiv);
+  if (filledDiv === "avatar-container") {
+    await createPlayerArea();
+    filledDiv = document.querySelector("." + filledDiv);
+    avatarList.forEach((name) => {
+      // Create div with classList "avatar-card"
+      let newDiv = document.createElement("div");
+      // Add img with corresponding avatarList[X] avatar inside div
+      let img = document.createElement("img");
+      img.id = `${name}`;
+      img.src = "./assets/img/avatar/" + `${name}` + ".png";
+      newDiv.appendChild(img);
 
-  // avatarList.forEach((name) => {
-  //   // Create div with classList "avatar-card"
-  //   let newDiv = document.createElement("div");
-  //   // Add img with corresponding avatarList[X] avatar inside div
-  //   let img = document.createElement("img");
-  //   img.id = `${name}`;
-  //   img.src = "./assets/img/avatar/" + `${name}` + ".png";
-  //   newDiv.appendChild(img);
+      // Add the functions to each DIV per avatar IF in player selection. Computer Avatar have no interaction
+      newDiv.classList.add("avatar-card");
+      newDiv.classList.add("player");
+      newDiv.addEventListener("click", getPlayerAvatarChoice);
 
-  //   // Add the functions to each DIV per avatar IF in player selection. Computer Avatar have no interaction
-  //   if (filledDiv === avatarPlayerContainer) {
-  //     newDiv.classList.add("avatar-card");
-  //     newDiv.classList.add("player");
-  //     newDiv.addEventListener("click", getPlayerAvatarChoice);
-  //   }
-  //   newDiv.classList.add("avatar-card");
-  //   filledDiv.appendChild(newDiv);
-  // });
+      newDiv.classList.add("avatar-card");
+      filledDiv.appendChild(newDiv);
+    });
+  } else if (filledDiv === "computer-avatar-container") {
+    await createComputerArea();
+    filledDiv = document.querySelector("." + filledDiv);
+    avatarList.forEach((name) => {
+      // Create div with classList "avatar-card"
+      let newDiv = document.createElement("div");
+      // Add img with corresponding avatarList[X] avatar inside div
+      let img = document.createElement("img");
+      img.id = `${name}`;
+      img.src = "./assets/img/avatar/" + `${name}` + ".png";
+      newDiv.appendChild(img);
+      newDiv.classList.add("avatar-card");
+      filledDiv.appendChild(newDiv);
+    });
+  }
 };
+
+function getPlayerAvatarChoice(e) {
+  // html collection to Array to use forEach() method
+  //   let avatarPlayerContainerChild = Array.from(avatarPlayerContainer.children);
+  avatarPlayerContainerChild = Array.from(avatarPlayerContainer.children);
+  let targetClass = e.target.classList.value;
+
+  //   Detect and store the click by the user to lock double click while BlinkingRunning
+  isBlinkRunning = true;
+  avatarPlayerContainerChild.forEach((child) => {
+    //   Remove the previous avatar selected
+    if (child.classList.value.includes("active")) {
+      child.classList.remove("active");
+    } else {
+      return;
+    }
+  });
+
+  //   Then add the class to the target click div with child click handling
+  //   If the click is on the DIV element add the class to the target
+  if (targetClass.includes("avatar-card")) {
+    e.target.classList.add("active");
+    playerAvatar = Array.from(e.target.children)[0].id;
+  } else {
+    // If the click is on the img child of DIV - get the parent and add the class
+    e.target.parentElement.classList.add("active");
+    playerAvatar = e.target.id;
+  }
+
+  // setAvatarClickEvent(isBlinkRunning);
+  //computerChoiceAnimation();
+}
+
+// Function called when started is pressed when we are in landing state
+function passToGameOffState() {
+  gameContainerArea.classList.add("gameOff");
+  playerArea.classList.remove("landingState");
+  playerArea.classList.add("gameOff");
+  computerArea.classList.remove("landingState");
+  computerArea.classList.add("gameOff");
+  gameboyArea.classList.remove("landingState");
+  gameboyArea.classList.add("gameOff");
+  startButton.classList.remove("detected");
+  startButton.classList.add("gameOff");
+  gbScreen.classList.add("gameOff");
+  pageState = "gameOff";
+}

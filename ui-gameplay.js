@@ -17,8 +17,13 @@ function startButtonPressed(state) {
     case "landingState":
       // f1 --> RPS
       //        ---> Create player Area Div
-      createPlayerArea();
+      // createPlayerArea();
+      // createComputerArea();
+      // Async function will call createPlayerArea
       addAvatar("avatar-container");
+      // Async function will call createComputerArea
+      addAvatar("computer-avatar-container");
+      // passToGameOffState();
       // addAvatar(avatarPlayerContainer);
       //        ---> Create Computer Area Div
       //        ---> Add them on layout at the right place
