@@ -1,17 +1,4 @@
 // Function called when started is pressed when we are in landing state
-function passToGameOffState() {
-  gameContainerArea.classList.add("gameOff");
-  playerArea.classList.remove("landingState");
-  playerArea.classList.add("gameOff");
-  computerArea.classList.remove("landingState");
-  computerArea.classList.add("gameOff");
-  gameboyArea.classList.remove("landingState");
-  gameboyArea.classList.add("gameOff");
-  startButton.classList.remove("detected");
-  startButton.classList.add("gameOff");
-  gbScreen.classList.add("gameOff");
-  pageState = "gameOff";
-}
 
 function passToLandingState() {
   gameContainerArea.classList.remove("gameOff");
@@ -44,36 +31,6 @@ function passToGameOnState() {
 }
 
 // --------------------------------------------------------------------------------------------//
-// -----> Function n°2 => add Avatar with interaction
-
-function addAvatar(filledDiv) {
-  let previousAvatarPlayerContainer =
-    document.querySelector(".avatar-container");
-  let previousAvatarComputerContainer = document.querySelector(
-    ".computer-avatar-container"
-  );
-  console.log(previousAvatarComputerContainer.children);
-  previousAvatarComputerContainer.children.remove();
-
-  avatarList.forEach((name) => {
-    // Create div with classList "avatar-card"
-    let newDiv = document.createElement("div");
-    // Add img with corresponding avatarList[X] avatar inside div
-    let img = document.createElement("img");
-    img.id = `${name}`;
-    img.src = "./assets/img/avatar/" + `${name}` + ".png";
-    newDiv.appendChild(img);
-
-    // Add the functions to each DIV per avatar IF in player selection. Computer Avatar have no interaction
-    if (filledDiv === avatarPlayerContainer) {
-      newDiv.classList.add("avatar-card");
-      newDiv.classList.add("player");
-      newDiv.addEventListener("click", getPlayerAvatarChoice);
-    }
-    newDiv.classList.add("avatar-card");
-    filledDiv.appendChild(newDiv);
-  });
-}
 // --------------------------------------------------------------------------------------------//
 // -----> Function n°3 => get avatar player choice
 
