@@ -61,11 +61,14 @@
     background-color 0.2s ease-in;
 }
 
-.player-area.landingState,
-.player-area.gameOn {
+.player-area.landingState {
     display: block;
     visibility: hidden;
     opacity: 0;
+}
+
+.player-area.gameOn {
+    display: none;
 }
 .player-area.gameOff {
     display: block;
@@ -139,8 +142,9 @@ h1 {
     transform: scale(0.5);
     opacity: 0;
 }
+
 .gameboy-area.landingState,
-.gameOn {
+.gameboy-area.gameOn {
     position: relative;
     min-width: 1080px;
     min-height: 700px;
@@ -158,9 +162,7 @@ h1 {
     min-height: 233px;
     max-width: 360px;
     max-height: 233px;
-
     /* border: solid 1px green; */
-
     transition: 0.2s ease-in;
 }
 
@@ -221,6 +223,11 @@ h1 {
     visibility: hidden;
     opacity: 0;
 }
+
+.computer-area.gameOn {
+    display: none;
+}
+
 .computer-area.gameOff {
     height: 100%;
     width: 35%;
