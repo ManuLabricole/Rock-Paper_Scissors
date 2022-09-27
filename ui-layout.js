@@ -32,7 +32,6 @@ function loadAnimation() {
   gameboyArea.classList.remove("loadState");
   gameboyArea.classList.add("landingState");
   createStartButton();
-  addAvatarOnScreen("avatar_1", "avatar_3");
   pageState = "landingState";
 }
 

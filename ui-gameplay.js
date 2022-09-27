@@ -68,7 +68,6 @@ function getPlayerAvatarChoice(e) {
   setAvatarClickEvent(isBlinkRunning);
   removePlayButton();
   removeVersusDiv();
-
   avatarBlinkloop(2, 0, avatarTreshold);
 }
 
@@ -98,6 +97,7 @@ function playButtonPressed() {
   removePlayButton();
   removeVersusDiv();
   passToGameOn();
+  addAvatarOnScreen(playerAvatar, computerAvatar);
   // Change class of layout to make GB bigger
   // Lannch GameplayOn
 }
