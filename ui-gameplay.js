@@ -1,7 +1,7 @@
 const states = ["loadState", "landingState", "gameOff", "gameOn"];
 let pageState = states[0];
-
 let playerAvatar = "";
+let computerAvatar = "";
 
 // --------------------------------------------------------------------------------------------//
 // -----> function n°1 => First animation when page loaded
@@ -25,7 +25,11 @@ function startButtonPressed(state) {
       passToGameOffState();
       break;
     case "gameOff":
-    //passToLandingState();
+      removeAvatarArea();
+      passToLandingState();
+      break;
+    case "gameOn":
+      console.log(playerAvatar + " " + computerAvatar);
   }
 }
 
@@ -90,9 +94,10 @@ function setAvatarClickEvent(isBlinkingRunning) {
 // ---> Function n°5 : Player click on Play and Launch the game
 
 function playButtonPressed() {
+  playPressedLayoutUpdate();
   removePlayButton();
-  passToGameOnState();
   removeVersusDiv();
+  passToGameOn();
   // Change class of layout to make GB bigger
   // Lannch GameplayOn
 }

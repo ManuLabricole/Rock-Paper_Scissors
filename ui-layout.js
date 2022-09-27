@@ -2,10 +2,8 @@
 const body = document.querySelector("body");
 const gameContainerArea = document.getElementById("game-container");
 const gameboyArea = document.getElementById("gameboy-area");
-
 const startButton = document.getElementById("start-button");
 const bgImg = document.getElementById("bg_img");
-
 const gbScreen = document.getElementById("gb-screen");
 
 // List created to get "avatar" string to load avatar image in later functions
@@ -34,6 +32,7 @@ function loadAnimation() {
   gameboyArea.classList.remove("loadState");
   gameboyArea.classList.add("landingState");
   createStartButton();
+  addAvatarOnScreen("avatar_1", "avatar_3");
   pageState = "landingState";
 }
 
@@ -131,6 +130,8 @@ const addAvatar = async (filledDiv) => {
   }
 };
 
+// --------------------------------------------------------------------------------------------//
+// Function triggered when user select an avatar ----------------------------------------------//
 // ----> Function n°5 : Blinking animation & random computer choice in last loop
 function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
   let avatarComputerContainer = document.querySelector(
@@ -168,13 +169,13 @@ function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
       loopCount = -1;
       counter = 0;
       avatarTriggerNum = Math.floor(Math.random() * avatarList.length); // random computer selection
-      console.log(avatarTriggerNum);
+      computerAvatar = avatarList[avatarTriggerNum];
     } else if (loopCount === -1) {
       isBlinkRunning = false;
       avatarComputerContainerChild[counter - 1].classList.remove("active");
       avatarComputerContainerChild[counter].classList.add("active");
       setAvatarClickEvent(isBlinkRunning);
-      displayVersusDiv(playerAvatar, avatarTriggerNum);
+      displayVersusDiv(playerAvatar, computerAvatar);
       return "run";
     }
     avatarBlinkloop(loopCount, counter, avatarTriggerNum);
@@ -186,6 +187,8 @@ function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
 // This function will get & Display the two choices
 // Create a div with Avatar chosen : "Player VS Computer" display
 // Finally will add a START button to laumnch the game
+
+// ----> Function n°6 : Create | Remove and Display Results of avatar choices
 
 // If already displayed, removed the previous to prevent superposition
 function removeVersusDiv() {
@@ -224,8 +227,8 @@ function displayVersusDiv(playerId, computerId) {
 
   // Add img with corresponding to randomChoice in blinking function
   // Then the number is associated to the avatarList Array
-  imgComputer.id = avatarList[computerId];
-  imgComputer.src = "./assets/img/avatar/" + avatarList[computerId] + ".png";
+  imgComputer.id = computerId;
+  imgComputer.src = "./assets/img/avatar/" + computerId + ".png";
   newComputerAvatarDiv.appendChild(imgComputer);
   newComputerAvatarDiv.classList.add("avatar-card");
 
@@ -236,6 +239,8 @@ function displayVersusDiv(playerId, computerId) {
 
   displayPlayButton();
 }
+
+// ----> Function n°7 : Create | Remove and Display PlayButton
 
 function removePlayButton() {
   // If two choices of avatar, remove the previous playButton added
@@ -261,7 +266,64 @@ function displayPlayButton() {
   }, 10);
 }
 
-// Function called when started is pressed when we are in landing state
+// ------------------------------------------------------------------------------------------//
+// ----> Function n°8 : Remove AvatarArea when start clicked from gameOff
+
+function removeAvatarArea() {
+  let playerArea = document.getElementById("player-area");
+  let computerArea = document.getElementById("computer-area");
+  playerArea.remove();
+  computerArea.remove();
+}
+
+function playPressedLayoutUpdate() {
+  removePlayButton();
+  removeVersusDiv();
+  removeAvatarArea();
+}
+
+// ------------------------------------------------------------------------------------------//
+// ----> Function n°9 : Add gamePlay into Screen
+
+function addAvatarOnScreen(playerId, computerId) {
+  let playerAvatarDiv = document.createElement("div");
+  let computerAvatarDiv = document.createElement("div");
+  let imgPlayer = document.createElement("img");
+  let imgComputer = document.createElement("img");
+
+  let playerLifeDiv = document.createElement("div");
+  let computerLifeDiv = document.createElement("div");
+
+  imgPlayer.id = playerId;
+  imgPlayer.src = "./assets/img/avatar/" + playerId + ".png";
+  imgComputer.id = computerId;
+  imgComputer.src = "./assets/img/avatar/" + computerId + ".png";
+  playerAvatarDiv.appendChild(imgPlayer);
+  computerAvatarDiv.appendChild(imgComputer);
+
+  // Add a before class to handle transition apparition on gameboy screen
+  playerAvatarDiv.classList.add("player-avatar-gb");
+  computerAvatarDiv.classList.add("computer-avatar-gb");
+
+  gbScreen.appendChild(playerLifeDiv);
+  gbScreen.appendChild(computerLifeDiv);
+  gbScreen.appendChild(playerAvatarDiv);
+  gbScreen.appendChild(computerAvatarDiv);
+
+  setTimeout(() => {
+    playerAvatarDiv.classList.add("after");
+    computerAvatarDiv.classList.add("after");
+    playerLifeDiv.classList.add("player-life");
+    computerLifeDiv.classList.add("computer-life");
+  }, 500);
+}
+
+function updateLifeBar() {
+  let;
+}
+
+// -----> Function n°8 :
+// Function called when startButton is pressed when we are in landing state
 function passToGameOffState() {
   // Id added when createPlayer/ComputerArea function is called
   const playerArea = document.getElementById("player-area");
@@ -277,4 +339,24 @@ function passToGameOffState() {
   startButton.classList.add("gameOff");
   gbScreen.classList.add("gameOff");
   pageState = "gameOff";
+}
+
+// Function called when startButton is pressed when we are in gameOff state
+function passToLandingState() {
+  gameContainerArea.classList.remove("gameOff");
+  gameboyArea.classList.remove("gameOff");
+  gameboyArea.classList.add("landingState");
+  startButton.classList.remove("gameOff", "detected");
+  gbScreen.classList.remove("gameOff");
+  pageState = "landingState";
+}
+
+function passToGameOn() {
+  gameContainerArea.classList.remove("gameOff");
+  gameboyArea.classList.remove("gameOff");
+  gameboyArea.classList.add("gameOn");
+  startButton.classList.remove("gameOff");
+  gbScreen.classList.remove("gameOff");
+  gbScreen.classList.add("gameOn");
+  pageState = "gameOn";
 }

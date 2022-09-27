@@ -51,6 +51,11 @@
 
     border-radius: 50px;
     background-color: transparent;
+    backdrop-filter: blur(0px);
+
+    -webkit-transition: 
+    backdrop-filter 0.2s ease-in,
+    background-color 0.2s ease-in;
 }
 
 .game-container.gameOff {
@@ -192,8 +197,7 @@ h1 {
     inset 2px -2px 2px white;
 }
 
-.gb-screen,
-.gb-screen.gameOn {
+.gb-screen {
     position: absolute;
     top: 27%;
     left: 50%; transform: translateX(-50%);
@@ -216,6 +220,16 @@ h1 {
 
     justify-content: center;
     align-items: center;
+}
+
+.gb-screen.gameOn {
+    top: 27%;
+    left: 50%; transform: translateX(-50%);
+    height: 280px;
+    width: 405px;
+    border-radius: 5px;
+    background: rgb(170, 170, 173);
+    transition: 0.2s ease-in;
 }
 
 .computer-area.landingState {
@@ -323,6 +337,75 @@ h1 {
     cursor: pointer;
 }
 
+/* ----------------------------------------------------------------------------------- */
+/* ---------------------------------- Added GameBoy ---------------------------------- */
+/* ----------------------------------------------------------------------------------- */
+
+.player-avatar-gb{
+    position: absolute;
+    top: 0px;left: 0px;
+    margin: 5px;
+    height : 130px;
+    width: 130px;
+    padding: 5px;
+    border: solid 2px red;
+
+    display: flex;
+    justify-content: center;
+
+    transform: translateX(-110px);
+}
+
+.player-avatar-gb.after {
+    transform: translateX(0);
+    transition: 0.5s ease-in-out;
+}
+.player-avatar-gb > img {
+    height: 100%;
+}
+
+.computer-avatar-gb{
+    position: absolute;
+    bottom: 0px;right: 0px;
+    margin: 5px;
+    height : 130px;
+    width: 130px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    transform: translateX(110px);
+    border: solid 2px red;
+}
+.computer-avatar-gb.after {
+    transform: translateX(0);
+    transition: 0.5s ease-in-out;
+}
+
+.computer-avatar-gb > img {
+    height: 100%;
+}
+
+.player-life {
+    position: absolute;
+    left: 5px;
+    top: 140px;
+    height: 10px;
+    width: 130px;
+    border-radius: 5px;
+    background-color: green;
+    transition: 1s;
+}
+
+.computer-life {
+    position: absolute;
+    right: 5px;
+    bottom: 140px;
+    height: 10px;
+    width: 130px;
+    border-radius: 5px;
+    background-color: green;
+    transition: 1s;
+}
 /* ----------------------------------------------------------------------------------- */
 /* ------------------------------------ animation ------------------------------------ */
 /* ----------------------------------------------------------------------------------- */

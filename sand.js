@@ -63,7 +63,7 @@ function getPlayerAvatarChoice(e) {
   }
 
   setAvatarClickEvent(isBlinkRunning);
-  computerChoiceAnimation();
+  //   computerChoiceAnimation();
 }
 
 // --------------------------------------------------------------------------------------------//
