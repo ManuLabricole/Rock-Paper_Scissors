@@ -338,6 +338,75 @@ h1 {
 }
 
 /* ----------------------------------------------------------------------------------- */
+/* ---------------------------------- Added GameBoy ---------------------------------- */
+/* ----------------------------------------------------------------------------------- */
+
+.player-avatar-gb{
+    position: absolute;
+    top: 0px;left: 0px;
+    margin: 5px;
+    height : 130px;
+    width: 130px;
+    padding: 5px;
+    border: solid 2px red;
+
+    display: flex;
+    justify-content: center;
+
+    transform: translateX(-110px);
+}
+
+.player-avatar-gb.after {
+    transform: translateX(0);
+    transition: 0.5s ease-in-out;
+}
+.player-avatar-gb > img {
+    height: 100%;
+}
+
+.computer-avatar-gb{
+    position: absolute;
+    bottom: 0px;right: 0px;
+    margin: 5px;
+    height : 130px;
+    width: 130px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    transform: translateX(110px);
+    border: solid 2px red;
+}
+.computer-avatar-gb.after {
+    transform: translateX(0);
+    transition: 0.5s ease-in-out;
+}
+
+.computer-avatar-gb > img {
+    height: 100%;
+}
+
+.player-life {
+    position: absolute;
+    left: 5px;
+    top: 140px;
+    height: 10px;
+    width: 130px;
+    border-radius: 5px;
+    background-color: green;
+    transition: 1s;
+}
+
+.computer-life {
+    position: absolute;
+    right: 5px;
+    bottom: 140px;
+    height: 10px;
+    width: 130px;
+    border-radius: 5px;
+    background-color: green;
+    transition: 1s;
+}
+/* ----------------------------------------------------------------------------------- */
 /* ------------------------------------ animation ------------------------------------ */
 /* ----------------------------------------------------------------------------------- */
 

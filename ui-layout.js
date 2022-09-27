@@ -291,24 +291,35 @@ function addAvatarOnScreen(playerId, computerId) {
   let imgPlayer = document.createElement("img");
   let imgComputer = document.createElement("img");
 
-  console.log(playerId);
+  let playerLifeDiv = document.createElement("div");
+  let computerLifeDiv = document.createElement("div");
 
   imgPlayer.id = playerId;
   imgPlayer.src = "./assets/img/avatar/" + playerId + ".png";
-  playerAvatarDiv.appendChild(imgPlayer);
-  playerAvatarDiv.classList.add("avatar-card");
-  playerAvatarDiv.classList.add("player-on-screen");
-
-  // Add img with corresponding to randomChoice in blinking function
-  // Then the number is associated to the avatarList Array
   imgComputer.id = computerId;
   imgComputer.src = "./assets/img/avatar/" + computerId + ".png";
+  playerAvatarDiv.appendChild(imgPlayer);
   computerAvatarDiv.appendChild(imgComputer);
-  computerAvatarDiv.classList.add("avatar-card");
-  computerAvatarDiv.classList.add("computer-on-screen");
 
+  // Add a before class to handle transition apparition on gameboy screen
+  playerAvatarDiv.classList.add("player-avatar-gb");
+  computerAvatarDiv.classList.add("computer-avatar-gb");
+
+  gbScreen.appendChild(playerLifeDiv);
+  gbScreen.appendChild(computerLifeDiv);
   gbScreen.appendChild(playerAvatarDiv);
   gbScreen.appendChild(computerAvatarDiv);
+
+  setTimeout(() => {
+    playerAvatarDiv.classList.add("after");
+    computerAvatarDiv.classList.add("after");
+    playerLifeDiv.classList.add("player-life");
+    computerLifeDiv.classList.add("computer-life");
+  }, 500);
+}
+
+function updateLifeBar() {
+  let;
 }
 
 // -----> Function n°8 :
