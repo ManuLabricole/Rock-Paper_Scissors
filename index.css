@@ -51,6 +51,11 @@
 
     border-radius: 50px;
     background-color: transparent;
+    backdrop-filter: blur(0px);
+
+    -webkit-transition: 
+    backdrop-filter 0.2s ease-in,
+    background-color 0.2s ease-in;
 }
 
 .game-container.gameOff {
