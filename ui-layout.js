@@ -32,6 +32,7 @@ function loadAnimation() {
   gameboyArea.classList.remove("loadState");
   gameboyArea.classList.add("landingState");
   createStartButton();
+  addAvatarOnScreen("avatar_1", "avatar_3");
   pageState = "landingState";
 }
 
@@ -279,6 +280,35 @@ function playPressedLayoutUpdate() {
   removePlayButton();
   removeVersusDiv();
   removeAvatarArea();
+}
+
+// ------------------------------------------------------------------------------------------//
+// ----> Function n°9 : Add gamePlay into Screen
+
+function addAvatarOnScreen(playerId, computerId) {
+  let playerAvatarDiv = document.createElement("div");
+  let computerAvatarDiv = document.createElement("div");
+  let imgPlayer = document.createElement("img");
+  let imgComputer = document.createElement("img");
+
+  console.log(playerId);
+
+  imgPlayer.id = playerId;
+  imgPlayer.src = "./assets/img/avatar/" + playerId + ".png";
+  playerAvatarDiv.appendChild(imgPlayer);
+  playerAvatarDiv.classList.add("avatar-card");
+  playerAvatarDiv.classList.add("player-on-screen");
+
+  // Add img with corresponding to randomChoice in blinking function
+  // Then the number is associated to the avatarList Array
+  imgComputer.id = computerId;
+  imgComputer.src = "./assets/img/avatar/" + computerId + ".png";
+  computerAvatarDiv.appendChild(imgComputer);
+  computerAvatarDiv.classList.add("avatar-card");
+  computerAvatarDiv.classList.add("computer-on-screen");
+
+  gbScreen.appendChild(playerAvatarDiv);
+  gbScreen.appendChild(computerAvatarDiv);
 }
 
 // -----> Function n°8 :
