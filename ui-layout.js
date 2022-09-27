@@ -2,10 +2,8 @@
 const body = document.querySelector("body");
 const gameContainerArea = document.getElementById("game-container");
 const gameboyArea = document.getElementById("gameboy-area");
-
 const startButton = document.getElementById("start-button");
 const bgImg = document.getElementById("bg_img");
-
 const gbScreen = document.getElementById("gb-screen");
 
 // List created to get "avatar" string to load avatar image in later functions
@@ -170,13 +168,13 @@ function avatarBlinkloop(recallLoopCounter, loopCounter, avatarTriggerNum) {
       loopCount = -1;
       counter = 0;
       avatarTriggerNum = Math.floor(Math.random() * avatarList.length); // random computer selection
-      console.log(avatarTriggerNum);
+      computerAvatar = avatarList[avatarTriggerNum];
     } else if (loopCount === -1) {
       isBlinkRunning = false;
       avatarComputerContainerChild[counter - 1].classList.remove("active");
       avatarComputerContainerChild[counter].classList.add("active");
       setAvatarClickEvent(isBlinkRunning);
-      displayVersusDiv(playerAvatar, avatarTriggerNum);
+      displayVersusDiv(playerAvatar, computerAvatar);
       return "run";
     }
     avatarBlinkloop(loopCount, counter, avatarTriggerNum);
@@ -228,8 +226,8 @@ function displayVersusDiv(playerId, computerId) {
 
   // Add img with corresponding to randomChoice in blinking function
   // Then the number is associated to the avatarList Array
-  imgComputer.id = avatarList[computerId];
-  imgComputer.src = "./assets/img/avatar/" + avatarList[computerId] + ".png";
+  imgComputer.id = computerId;
+  imgComputer.src = "./assets/img/avatar/" + computerId + ".png";
   newComputerAvatarDiv.appendChild(imgComputer);
   newComputerAvatarDiv.classList.add("avatar-card");
 
@@ -277,6 +275,12 @@ function removeAvatarArea() {
   computerArea.remove();
 }
 
+function playPressedLayoutUpdate() {
+  removePlayButton();
+  removeVersusDiv();
+  removeAvatarArea();
+}
+
 // -----> Function n°8 :
 // Function called when startButton is pressed when we are in landing state
 function passToGameOffState() {
@@ -304,4 +308,14 @@ function passToLandingState() {
   startButton.classList.remove("gameOff", "detected");
   gbScreen.classList.remove("gameOff");
   pageState = "landingState";
+}
+
+function passToGameOn() {
+  gameContainerArea.classList.remove("gameOff");
+  gameboyArea.classList.remove("gameOff");
+  gameboyArea.classList.add("gameOn");
+  startButton.classList.remove("gameOff");
+  gbScreen.classList.remove("gameOff");
+  gbScreen.classList.add("gameOn");
+  pageState = "gameOn";
 }
