@@ -25,9 +25,8 @@ function startButtonPressed(state) {
       passToGameOffState();
       break;
     case "gameOff":
-      console.log(state);
-      passToLandingState();
       removeAvatarArea();
+      passToLandingState();
   }
 }
 

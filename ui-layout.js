@@ -268,6 +268,14 @@ function displayPlayButton() {
 }
 
 // ------------------------------------------------------------------------------------------//
+// ----> Function n°8 : Remove AvatarArea when start clicked from gameOff
+
+function removeAvatarArea() {
+  let playerArea = document.getElementById("player-area");
+  let computerArea = document.getElementById("computer-area");
+  playerArea.remove();
+  computerArea.remove();
+}
 
 // -----> Function n°8 :
 // Function called when startButton is pressed when we are in landing state
@@ -291,14 +299,9 @@ function passToGameOffState() {
 // Function called when startButton is pressed when we are in gameOff state
 function passToLandingState() {
   gameContainerArea.classList.remove("gameOff");
-  playerArea.classList.remove("gameOff");
-  playerArea.classList.add("landingState");
-  computerArea.classList.remove("gameOff");
-  computerArea.classList.add("landingState");
   gameboyArea.classList.remove("gameOff");
   gameboyArea.classList.add("landingState");
   startButton.classList.remove("gameOff", "detected");
-  //   startButton.classList.add("detected");
   gbScreen.classList.remove("gameOff");
   pageState = "landingState";
 }
