@@ -223,6 +223,7 @@ h1 {
 }
 
 .gb-screen.gameOn {
+    overflow: hidden;
     top: 27%;
     left: 50%; transform: translateX(-50%);
     height: 280px;
@@ -348,7 +349,7 @@ h1 {
     height : 130px;
     width: 130px;
     padding: 5px;
-    border: solid 2px red;
+    /* border: solid 2px red; */
 
     display: flex;
     justify-content: center;
@@ -374,7 +375,7 @@ h1 {
     display: flex;
     justify-content: center;
     transform: translateX(110px);
-    border: solid 2px red;
+    /* border: solid 2px red; */
 }
 .computer-avatar-gb.after {
     transform: translateX(0);
@@ -388,7 +389,7 @@ h1 {
 .player-life {
     position: absolute;
     left: 5px;
-    top: 140px;
+    top: 135px;
     height: 10px;
     width: 130px;
     border-radius: 5px;
@@ -399,7 +400,7 @@ h1 {
 .computer-life {
     position: absolute;
     right: 5px;
-    bottom: 140px;
+    bottom: 135px;
     height: 10px;
     width: 130px;
     border-radius: 5px;
